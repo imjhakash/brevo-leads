@@ -1,0 +1,35 @@
+name: Daily Lead Outreach
+
+on:
+  schedule:
+    # 09:00 UTC every day. Adjust to your preferred send time.
+    - cron: "0 9 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Send today's batch
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: python3 send_daily_batch.py
+
+      - name: Commit updated progress + logs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add progress.json logs/ || true
+          git diff --cached --quiet || git commit -m "Daily outreach run $(date -u +%Y-%m-%d)"
+          git push
