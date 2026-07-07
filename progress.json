@@ -1,10 +1,18 @@
 {
-  "cycle_index": 0,
+  "cycle_index": 1,
   "pointers": {
-    "construction": 0,
+    "construction": 300,
     "banking": 0,
     "accounting": 0,
     "automotive": 0
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-07-07",
+      "category": "construction",
+      "attempted": 300,
+      "sent": 300,
+      "failed": 0
+    }
+  ]
 }
