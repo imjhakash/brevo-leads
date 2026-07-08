@@ -1,9 +1,9 @@
 {
-  "cycle_index": 7,
+  "cycle_index": 4,
   "pointers": {
     "construction": 600,
     "banking": 600,
-    "accounting": 600,
+    "accounting": 300,
     "automotive": 300
   },
   "history": [
@@ -58,7 +58,8 @@
         "category": "accounting",
         "attempted": 300,
         "sent": 0,
-        "failed": 300
+        "failed": 300,
+        "note": "Failed - IP restriction on account 3 was still active. Pointer rolled back."
       }
     }
   ]
