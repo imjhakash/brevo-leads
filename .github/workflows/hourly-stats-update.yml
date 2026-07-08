@@ -1,0 +1,31 @@
+name: Hourly Stats Update
+
+on:
+  schedule:
+    # Every hour at minute 0
+    - cron: "0 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Update Google Sheet with Brevo stats
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_API_KEY_2: ${{ secrets.BREVO_API_KEY_2 }}
+          BREVO_API_KEY_3: ${{ secrets.BREVO_API_KEY_3 }}
+          SHEET_WEBHOOK_URL: ${{ secrets.SHEET_WEBHOOK_URL }}
+          SHEET_AUTH_TOKEN: ${{ secrets.SHEET_AUTH_TOKEN }}
+        run: python3 update_stats_sheet.py
