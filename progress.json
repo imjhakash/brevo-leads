@@ -1,89 +1,46 @@
 {
-  "cycle_index": 7,
+  "cycle_index": 0,
   "pointers": {
-    "construction": 900,
-    "banking": 900,
-    "accounting": 600,
+    "construction": 300,
+    "banking": 300,
+    "accounting": 300,
     "automotive": 300
   },
+  "last_run_date": null,
   "history": [
     {
       "date": "2026-07-07",
       "category": "construction",
       "attempted": 300,
       "sent": 300,
-      "failed": 0
+      "failed": 0,
+      "note": "Account 1, within daily limit"
     },
     {
       "date": "2026-07-08",
       "category": "banking",
       "attempted": 300,
       "sent": 300,
-      "failed": 0
+      "failed": 0,
+      "note": "Account 1, within daily limit"
     },
     {
       "date": "2026-07-08",
-      "account_1": {
-        "category": "accounting",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      },
       "account_2": {
         "category": "automotive",
         "attempted": 300,
         "sent": 300,
         "failed": 0
       },
-      "total_sent": 600,
-      "total_failed": 0
-    },
-    {
-      "date": "2026-07-08",
-      "total_sent": 600,
-      "total_failed": 300,
-      "account_1": {
-        "category": "construction",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      },
-      "account_2": {
-        "category": "banking",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      },
       "account_3": {
         "category": "accounting",
         "attempted": 300,
-        "sent": 0,
-        "failed": 300,
-        "note": "Failed - IP restriction on account 3 was still active. Pointer rolled back."
-      }
-    },
-    {
-      "date": "2026-07-08",
-      "total_sent": 900,
+        "sent": 300,
+        "failed": 0
+      },
+      "total_sent": 600,
       "total_failed": 0,
-      "account_1": {
-        "category": "construction",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      },
-      "account_2": {
-        "category": "banking",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      },
-      "account_3": {
-        "category": "accounting",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      }
+      "note": "Account 2 automotive + Account 3 accounting delivered. Multiple manual test runs on same day caused Account 1 & 2 to exceed 300/day limit - excess emails silently dropped by Brevo. Pointers rolled back to actual delivered counts."
     }
   ]
 }

@@ -9,6 +9,13 @@ Each day picks THREE consecutive categories from the rotation:
 
 This triples throughput while staying within each account's 300/day limit.
 
+SAFEGUARDS:
+  1. Same-day re-run protection: checks progress.json "last_run_date" and exits
+     if already run today (prevents multiple sends from manual workflow triggers).
+     Use --force to override (for testing only).
+  2. Brevo daily quota check: queries each account's actual sent count today
+     via Brevo API before sending. Skips accounts that already hit 300/day.
+
 State (which categories are "today", and how far each category's pointer
 has progressed) is persisted in progress.json, which this script updates
 in place. The GitHub Actions workflow commits that file back to the repo
@@ -48,10 +55,12 @@ if not API_KEY_3:
 
 BASE_URL = "https://api.brevo.com/v3"
 DAILY_BATCH_SIZE = 300
+BREVO_DAILY_LIMIT = 300
+FORCE = "--force" in sys.argv
 
 # Rotation order: three categories sent per day (one per account), cycling through all 4.
 # Subjects are intentionally omitted here so Brevo uses each template's own
-# stored subject line (which already contains {{contact.COMPANY}} merge tags).
+# stored subject line (which already contains {{ params.COMPANY }} merge tags).
 # template_id = account 1, template_id_2 = account 2, template_id_3 = account 3
 CATEGORIES = [
     {"key": "construction", "file": "construction.csv", "template_id": 7, "template_id_2": 20, "template_id_3": 8},
@@ -79,7 +88,7 @@ def load_progress():
     if os.path.exists(PROGRESS_PATH):
         with open(PROGRESS_PATH) as f:
             return json.load(f)
-    return {"cycle_index": 0, "pointers": {c["key"]: 0 for c in CATEGORIES}, "history": []}
+    return {"cycle_index": 0, "pointers": {c["key"]: 0 for c in CATEGORIES}, "history": [], "last_run_date": None}
 
 
 def save_progress(progress):
@@ -103,6 +112,21 @@ def load_leads(fname):
                 continue
             rows.append({"email": email, "firstname": firstname or "there", "company": company or "your company"})
     return rows
+
+
+def get_brevo_sent_today(api_key):
+    """Query Brevo API for how many transactional emails were sent today."""
+    today_str = date.today().strftime("%Y-%m-%d")
+    headers = make_headers(api_key)
+    url = f"{BASE_URL}/smtp/statistics/aggregatedReport?startDate={today_str}&endDate={today_str}"
+    req = urllib.request.Request(url, headers=headers, method="GET")
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+            return data.get("requests", 0)
+    except Exception as e:
+        print(f"  WARNING: Could not fetch Brevo stats ({e}). Assuming 0 sent today.")
+        return 0
 
 
 def send_one(template_id, recipient, api_key):
@@ -132,12 +156,12 @@ def send_one(template_id, recipient, api_key):
     return False, "failed after retries"
 
 
-def send_category_batch(category, account, progress):
-    """Send DAILY_BATCH_SIZE leads for one category using one Brevo account."""
+def send_category_batch(category, account, progress, max_sends):
+    """Send up to max_sends leads for one category using one Brevo account."""
     key = category["key"]
     leads = load_leads(category["file"])
     pointer = progress["pointers"].get(key, 0)
-    batch = leads[pointer:pointer + DAILY_BATCH_SIZE]
+    batch = leads[pointer:pointer + max_sends]
 
     if not batch:
         print(f"[Account {account['label']}] No more leads left for category '{key}'. Skipping.")
@@ -154,7 +178,9 @@ def send_category_batch(category, account, progress):
             fail_log.append({"email": lead["email"], "error": str(result)})
         time.sleep(0.15)
 
-    progress["pointers"][key] = pointer + len(batch)
+    # Only advance pointer by the number actually sent (not attempted)
+    # This prevents lost leads if Brevo silently drops emails
+    progress["pointers"][key] = pointer + sent
 
     return {
         "category": key,
@@ -164,13 +190,20 @@ def send_category_batch(category, account, progress):
         "failed": failed,
         "failures": fail_log,
         "pointer_before": pointer,
-        "pointer_after": pointer + len(batch),
+        "pointer_after": pointer + sent,
         "total_leads": len(leads),
     }
 
 
 def main():
     progress = load_progress()
+    today = date.today().isoformat()
+
+    # SAFEGUARD 1: Same-day re-run protection
+    if progress.get("last_run_date") == today and not FORCE:
+        print(f"Already ran today ({today}). Use --force to override. Exiting.")
+        return
+
     idx = progress["cycle_index"] % len(CATEGORIES)
 
     # Pick three consecutive categories: one for each account.
@@ -178,21 +211,33 @@ def main():
     for i in range(len(ACCOUNTS)):
         categories_today.append(CATEGORIES[(idx + i) % len(CATEGORIES)])
 
-    today = date.today().isoformat()
     print(f"=== Daily outreach for {today} ===")
+
+    # SAFEGUARD 2: Check Brevo daily quota for each account
     for i, (account, cat) in enumerate(zip(ACCOUNTS, categories_today)):
-        print(f"Account {account['label']} -> category: {cat['key']} (template {cat[account['template_field']]})")
+        sent_today = get_brevo_sent_today(account["api_key"])
+        remaining = BREVO_DAILY_LIMIT - sent_today
+        account["remaining"] = max(0, remaining)
+        print(f"Account {account['label']} -> category: {cat['key']} (template {cat[account['template_field']]}) | Brevo sent today: {sent_today}/{BREVO_DAILY_LIMIT} | remaining: {account['remaining']}")
+        if account["remaining"] == 0:
+            print(f"  WARNING: Account {account['label']} has hit daily limit. Will skip this account.")
     print()
 
-    # Send each account's batch
+    # Send each account's batch (limited by remaining quota)
     results = []
     for account, category in zip(ACCOUNTS, categories_today):
-        result = send_category_batch(category, account, progress)
+        if account["remaining"] == 0:
+            print(f"[Account {account['label']}] SKIPPED - daily limit reached. No sends for category '{category['key']}'.")
+            results.append({"category": category["key"], "account": account["label"], "attempted": 0, "sent": 0, "failed": 0, "failures": [], "pointer_before": progress["pointers"].get(category["key"], 0), "pointer_after": progress["pointers"].get(category["key"], 0), "total_leads": len(load_leads(category["file"]))})
+            continue
+        result = send_category_batch(category, account, progress, account["remaining"])
         results.append(result)
         print(f"[Account {result['account']}] Category={result['category']} attempted={result['attempted']} sent={result['sent']} failed={result['failed']} pointer={result['pointer_after']}/{result['total_leads']}")
 
-    # Advance cycle by number of accounts
-    progress["cycle_index"] += len(ACCOUNTS)
+    # Advance cycle by number of accounts that actually sent
+    accounts_sent = sum(1 for r in results if r["sent"] > 0)
+    progress["cycle_index"] += accounts_sent if accounts_sent > 0 else len(ACCOUNTS)
+    progress["last_run_date"] = today
 
     # Record history
     history_entry = {
