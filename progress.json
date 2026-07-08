@@ -1,8 +1,8 @@
 {
-  "cycle_index": 1,
+  "cycle_index": 2,
   "pointers": {
     "construction": 300,
-    "banking": 0,
+    "banking": 300,
     "accounting": 0,
     "automotive": 0
   },
@@ -10,6 +10,13 @@
     {
       "date": "2026-07-07",
       "category": "construction",
+      "attempted": 300,
+      "sent": 300,
+      "failed": 0
+    },
+    {
+      "date": "2026-07-08",
+      "category": "banking",
       "attempted": 300,
       "sent": 300,
       "failed": 0
