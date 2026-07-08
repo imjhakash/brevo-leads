@@ -1,0 +1,1212 @@
+{
+  "category": "accounting",
+  "account": "3",
+  "attempted": 300,
+  "sent": 0,
+  "failed": 300,
+  "failures": [
+    {
+      "email": "aball@eidebailly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abanask@mpcllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abandy@reconciled.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abannister@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abaqi@lutzandcarr.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abar@gtmtax.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarbee@skrco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abardoneschi@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarham@whitlockcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarilla@moorecolson.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarmann@mizecpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarnes@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarnett@hwllp.cpa",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarr@mgallp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarrett@ezreconcile.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarrett@lauterbachamen.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarrios@bodineperry.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarrow@effectusgroup.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abartke@nisivoccia.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abartley@fgmk.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abartnik@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abarton@lbmc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abasciano@aka-cpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abass@lanigancpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abasso@windes.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abateman@moorecolson.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abates@dentmoses.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abatson@ksmllc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abattaglia@abacuscpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abattaglia@rsabrams.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abatuello@pkfmueller.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abauer@anderscpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abauman@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abaumruk@sbc-cpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abautista@cpa-wfy.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abay.zhunussov@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abayramov@mmb-co.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abazikian@gursey.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abba@mnblum.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbey.fuller@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbey.robb@plantemoran.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbey.turk@plantemoran.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbey.voigt@cohnreznick.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbey@localeconomypayroll.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbey@lucenticorp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbeyb@pncpa.biz",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbi.palsma@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbi.ziegler@reacpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbie.chung@eisneramper.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbie.gration@elliottdavis.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbilene@unchainedfs.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.adams@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.barnhart@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.blandford@jnmcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.brewer@forvis.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.broadstreet@hcvt.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.cohen@novoco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.corgiat@mossadams.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.derner@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.dobson@forvis.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.dolgos@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.fisher@allinoneaccounting.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.greenwell@plantemoran.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.heidenrich@forvis.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.jones@accountingdepartment.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.kaiser@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.lamont@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.lubozynski@bergankdv.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.meyer@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.oren@apa.virginia.gov",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.parmentier@us.gt.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.peterson@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.ritland@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.roth@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.schwartz@us.gt.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.spickard@plantemoran.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.thompson@forvis.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby.weintraub@anchin.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@accountfully.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@apatax.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@championcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@choice-tax.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@cparichardson.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@goldenratiobookkeeping.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@premierbbs.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@ravenpaul.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abby@serenityfsgroup.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbyhanley@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbym@hostettercpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abbyw@carlsonsv.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abc@jaymalik.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abcarter-mesa@craigcarterassociates.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abdi.mohamed@mntaxservice.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abdixonatty@hotmail.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abdul.jah@us.gt.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abdul.mohamed@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abdul@mgreencpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abdulkadir@kdscpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abe@sndkids.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeach@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeam@corporatecfo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeasley@vptax.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeattie@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abecchio@keystonefamilyoffice.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeck@zdcpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abecker@akeystonecpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abecker@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abecker@frankrimerman.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeckman@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeckman@boulaygroup.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeckmann@cohencpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeda.shashi@plantemoran.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeecher@pkfod.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeer.aboushaar@cohnreznick.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abehring@gicpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeight@packerthomas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeinecke@jhamlin.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abel@foxgarcia.cpa",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abelcastro@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abell@hbecpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abelli@frankrimerman.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abelsick@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abemis@skmco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abenford@benfordbrown.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abennett@4l-law.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abennett@anderscpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abennett@rogersclem.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abenson@cdscpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abenson@mjcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abenvenuto@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberceau@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberge@tsacpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abergen@wolfandco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberger@bkadvice.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abergonia@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberke@clarifymedicalservices.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberkemeier@alliedfp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberlin@abipcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberman@kmco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberroyer@pmmpllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aberry@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abertke@barnesdennig.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abertoniere@wdco.biz",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abest@summitcpa.net",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abetancourt@kaufmanrossin.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abettinger@kdpllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abetts@bettsconsulting.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abeye@cpaiam.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abhargava@cfit-solutions.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abhave@realizecpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abhay@apercen.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abhi.kaneria@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abhi@accurettacpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abhijeetk@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abhijit.banerjee@eisneramper.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abi.yanke@hcvt.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abias@h2rcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abibb@mbs-cpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abice@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.bales@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.buck@us.gt.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.choi@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.dallessandro@cohnreznick.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.fischbeck@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.griffin-ryder@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.lorenzo@cohnreznick.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.mabley@bakertilly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.okine@dcaa.mil",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.schmidt@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.swallow@novoco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.thoennes@kearneyco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.weisensee@rsmus.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail.westin@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail@aboveboardbookkeeping.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail@cbs-la.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail@csmllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail@founderscpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigail@vanbeekco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigailchan@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigailmeade@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abigayle.kuhn@marcumllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abilal@pkfod.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abilder@supportingstrategies.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abinelo@dpbcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abinion@pdshcpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abiondo@uhy-us.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abirch@mhpllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abirla@prosperityllc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abissonnette@johnsonlambert.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abiye@gettaxshield.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abizub@mpcllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abizzarri@taxadvisorsgroup.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablackburn@efprgroup.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablackden@siegfriedgroup.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablackman@schulmanlobel.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablacknik@withum.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablake@cohencpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablanchard@moorecolson.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablanco@blancoaccounting.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablavi.fiokouna@dcaa.mil",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablaylock@frazerllp.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablock@cbizgl.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablood@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abloom@gsg-cpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "ablount@htbcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboatsman@trustbgw.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abock@sek.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abodas@hss-cpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abodeis@nfcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboeckman@dkacpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboehm@hoodstrong.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboffa@cohencpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboggess@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abogus@meeposcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboisclair@disantopriest.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboland@grfcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abonaventura@tsacpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abone@anderscpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboos@bspcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aborders@hugocpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abordovsky@abacus.cpa",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aborene@bwkaccounting.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aborghese@ceriniandassociates.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aborsuk@uhy-us.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abosworth@frankrimerman.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abotinis@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abotz@hagakommer.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboudreaux@laporte.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboudulahajjar@atecousa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abourgeois@lla.la.gov",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abourlier@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abourque@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abowen@hogantaylor.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abowens@nlbsolutions.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abowman@frankrimerman.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboxell@ksmcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboyce@bertsmithco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboyd@otcpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboyer@eidebailly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboykin@shgcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "aboyle@schneiderdowns.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abozesky@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abradley@wolfandco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrady@kmco.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abraham.valera@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abraham.yaqoobi@us.gt.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abraham@infinityfinancialny.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abraham@magistertaxdfw.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abraham@whinglobal.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abram.brodach@dhg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abramucci@kpmg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrand@hogantaylor.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrandt@henrypeters.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrandtduda@eidebailly.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrannen@gbq.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrannon@pensioninsider.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abranyan@mwhpc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abratton@dmainc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abravo@genskemulder.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abreaux@pmch.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abreinlinger@thezlcgroup.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abreslin@bys-hfc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrewer@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrewer@jtaylor.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrezeanu-merewitz@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrezko@ksmcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrieden@ssccpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abril.lopez@claconnect.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrisson@teamdkb.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrittsan@pkfsandiego.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrock@clevelandgroup.net",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrock@connerash.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrockman@johnsonlambert.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrodmann@krtcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrogan@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abromsm@abroms.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrookbank@calabresecpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrooks@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrooks@fluenceportland.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrooks@ifas-llc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrothers@pbmares.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abroussard@ksmllc.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@bandbacctg.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@ehacpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@esevans.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@kahnlitwin.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@mmmcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@rbk-cpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@rko-cpas.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrown@uhy-us.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrowning@accumepartners.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrumfield@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abruns@atkgcpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abrussel@deloitte.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abuchal@kurtzfargo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abuckett@biggskofford.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abuckingham@cdscpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abui@calibrecpa.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    },
+    {
+      "email": "abuitenhuis@bdo.com",
+      "error": "{\"message\":\"We have detected you are using an unrecognised IP address 20.119.79.66. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n"
+    }
+  ],
+  "pointer_before": 300,
+  "pointer_after": 600,
+  "total_leads": 79212
+}
