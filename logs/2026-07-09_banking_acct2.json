@@ -1,0 +1,11 @@
+{
+  "category": "banking",
+  "account": "2",
+  "attempted": 0,
+  "sent": 0,
+  "failed": 0,
+  "failures": [],
+  "pointer_before": 300,
+  "pointer_after": 300,
+  "total_leads": 157402
+}

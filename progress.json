@@ -1,12 +1,12 @@
 {
-  "cycle_index": 0,
+  "cycle_index": 1,
   "pointers": {
     "construction": 300,
     "banking": 300,
-    "accounting": 300,
+    "accounting": 600,
     "automotive": 300
   },
-  "last_run_date": null,
+  "last_run_date": "2026-07-09",
   "history": [
     {
       "date": "2026-07-07",
@@ -41,6 +41,29 @@
       "total_sent": 600,
       "total_failed": 0,
       "note": "Account 2 automotive + Account 3 accounting delivered. Multiple manual test runs on same day caused Account 1 & 2 to exceed 300/day limit - excess emails silently dropped by Brevo. Pointers rolled back to actual delivered counts."
+    },
+    {
+      "date": "2026-07-09",
+      "total_sent": 300,
+      "total_failed": 0,
+      "account_1": {
+        "category": "construction",
+        "attempted": 0,
+        "sent": 0,
+        "failed": 0
+      },
+      "account_2": {
+        "category": "banking",
+        "attempted": 0,
+        "sent": 0,
+        "failed": 0
+      },
+      "account_3": {
+        "category": "accounting",
+        "attempted": 300,
+        "sent": 300,
+        "failed": 0
+      }
     }
   ]
 }
