@@ -1,12 +1,12 @@
 {
-  "cycle_index": 2,
+  "cycle_index": 5,
   "pointers": {
-    "construction": 300,
+    "construction": 600,
     "banking": 300,
-    "accounting": 600,
-    "automotive": 600
+    "accounting": 898,
+    "automotive": 900
   },
-  "last_run_date": "2026-07-10",
+  "last_run_date": "2026-07-11",
   "history": [
     {
       "date": "2026-07-07",
@@ -83,6 +83,29 @@
       },
       "account_3": {
         "category": "automotive",
+        "attempted": 300,
+        "sent": 300,
+        "failed": 0
+      }
+    },
+    {
+      "date": "2026-07-11",
+      "total_sent": 898,
+      "total_failed": 1,
+      "account_1": {
+        "category": "accounting",
+        "attempted": 299,
+        "sent": 298,
+        "failed": 1
+      },
+      "account_2": {
+        "category": "automotive",
+        "attempted": 300,
+        "sent": 300,
+        "failed": 0
+      },
+      "account_3": {
+        "category": "construction",
         "attempted": 300,
         "sent": 300,
         "failed": 0
