@@ -1,11 +1,11 @@
 {
   "pointers": {
-    "construction": 1202,
+    "construction": 1503,
     "banking": 901,
     "accounting": 1198,
-    "automotive": 900
+    "automotive": 1200
   },
-  "last_run_date": null,
+  "last_run_date": "2026-07-11",
   "history": [
     {
       "date": "2026-07-07",
@@ -61,6 +61,41 @@
     {
       "date": "2026-07-12",
       "note": "Upgraded to 5-account system. Construction gets 2x accounts (600/day). Pointers corrected based on actual Brevo API send counts per template."
+    },
+    {
+      "date": "2026-07-11",
+      "total_sent": 601,
+      "total_failed": 0,
+      "account_1": {
+        "category": "construction",
+        "attempted": 1,
+        "sent": 1,
+        "failed": 0
+      },
+      "account_5": {
+        "category": "construction",
+        "attempted": 300,
+        "sent": 300,
+        "failed": 0
+      },
+      "account_2": {
+        "category": "banking",
+        "attempted": 0,
+        "sent": 0,
+        "failed": 0
+      },
+      "account_3": {
+        "category": "accounting",
+        "attempted": 0,
+        "sent": 0,
+        "failed": 0
+      },
+      "account_4": {
+        "category": "automotive",
+        "attempted": 300,
+        "sent": 300,
+        "failed": 0
+      }
     }
   ]
 }
