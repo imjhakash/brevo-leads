@@ -58,7 +58,7 @@ def get_aggregated_stats(api_key, start_date, end_date):
     """Get aggregated stats for a date range."""
     url = f"{BASE_URL}/smtp/statistics/aggregatedReport?startDate={start_date}&endDate={end_date}"
     try:
-        return api_get(url, api_key)
+        return api_get(url, api_key, timeout=15)
     except Exception as e:
         print(f"  Warning: Could not fetch aggregated stats: {e}")
         return {}
