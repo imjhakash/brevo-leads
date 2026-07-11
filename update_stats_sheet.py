@@ -134,7 +134,7 @@ def collect_detail_events():
         if not acct["key"]:
             continue
         print(f"Fetching email events for {acct['label']}...")
-        events = get_events(acct["key"], days=2, limit=1000)
+        events = get_events(acct["key"], days=7, limit=1000)
         for ev in events:
             category = TEMPLATE_TO_CATEGORY.get(ev.get("templateId"), "Unknown")
             all_events.append({
@@ -151,6 +151,42 @@ def collect_detail_events():
                 "account": acct["label"],
             })
     return all_events
+
+
+def collect_sent_emails():
+    """Collect all sent transactional emails from all 3 accounts."""
+    # Template IDs per account
+    ACCOUNT_TEMPLATES = {
+        "Account 1": [7, 6, 8, 9],
+        "Account 2": [20, 23, 21, 22],
+        "Account 3": [8, 5, 6, 7],
+    }
+    all_sent = []
+    for acct in API_KEYS:
+        if not acct["key"]:
+            continue
+        print(f"Fetching sent emails for {acct['label']}...")
+        tids = ACCOUNT_TEMPLATES.get(acct["label"], [])
+        for tid in tids:
+            url = f"{BASE_URL}/smtp/emails?templateId={tid}&limit=1000&offset=0&sort=desc"
+            try:
+                data = api_get(url, acct["key"])
+                for e in data.get("transactionalEmails", []):
+                    category = TEMPLATE_TO_CATEGORY.get(e.get("templateId"), "Unknown")
+                    all_sent.append({
+                        "email": e.get("email", ""),
+                        "date": e.get("date", ""),
+                        "subject": e.get("subject", ""),
+                        "category": category,
+                        "templateId": e.get("templateId", ""),
+                        "tag": ", ".join(e.get("tags", [])) if e.get("tags") else "",
+                        "from": e.get("from", ""),
+                        "messageId": e.get("messageId", ""),
+                        "account": acct["label"],
+                    })
+            except Exception as e:
+                print(f"  Warning: Could not fetch sent emails for template {tid}: {e}")
+    return all_sent
 
 
 def send_to_sheet(payload):
@@ -196,15 +232,17 @@ def main():
     # Collect data
     summaries = collect_summary()
     events = collect_detail_events()
+    sent_emails = collect_sent_emails()
 
     print()
-    print(f"Collected {len(summaries)} account summaries and {len(events)} email events")
+    print(f"Collected {len(summaries)} account summaries, {len(events)} email events, {len(sent_emails)} sent emails")
 
     # Send to Google Sheet
     payload = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "summaries": summaries,
         "events": events,
+        "sent_emails": sent_emails,
     }
 
     print("Sending to Google Sheet...")
