@@ -134,7 +134,7 @@ def collect_detail_events():
         if not acct["key"]:
             continue
         print(f"Fetching email events for {acct['label']}...")
-        events = get_events(acct["key"], days=7, limit=1000)
+        events = get_events(acct["key"], days=3, limit=1000)
         for ev in events:
             category = TEMPLATE_TO_CATEGORY.get(ev.get("templateId"), "Unknown")
             all_events.append({
@@ -168,7 +168,7 @@ def collect_sent_emails():
         print(f"Fetching sent emails for {acct['label']}...")
         tids = ACCOUNT_TEMPLATES.get(acct["label"], [])
         for tid in tids:
-            url = f"{BASE_URL}/smtp/emails?templateId={tid}&limit=1000&offset=0&sort=desc"
+            url = f"{BASE_URL}/smtp/emails?templateId={tid}&limit=500&offset=0&sort=desc"
             try:
                 data = api_get(url, acct["key"])
                 for e in data.get("transactionalEmails", []):
@@ -207,7 +207,7 @@ def send_to_sheet(payload):
 
     for attempt in range(3):
         try:
-            with urllib.request.urlopen(req, timeout=60) as resp:
+            with urllib.request.urlopen(req, timeout=300) as resp:
                 result = json.loads(resp.read())
                 print(f"Sheet updated: {result}")
                 return True
@@ -216,12 +216,12 @@ def send_to_sheet(payload):
             print(f"Error sending to sheet (attempt {attempt+1}): {err}")
             if attempt < 2:
                 import time
-                time.sleep(5)
+                time.sleep(10)
         except Exception as e:
             print(f"Error sending to sheet (attempt {attempt+1}): {e}")
             if attempt < 2:
                 import time
-                time.sleep(5)
+                time.sleep(10)
     return False
 
 
