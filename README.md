@@ -1,27 +1,25 @@
 # CodeMyPixel Daily Lead Outreach Automation
 
-Sends 900 cold outreach emails per day, fully automatically, via GitHub Actions.
-Uses THREE Brevo accounts (300/day each) to send THREE categories per day:
-Account 1 sends 300 from one category, Account 2 sends 300 from the next,
-Account 3 sends 300 from the third. Rotates through 4 lead categories:
-Construction, Banking, Accounting & CPA, Automotive. No manual sending
-required once set up.
+Sends 1500 cold outreach emails per day, fully automatically, via GitHub Actions.
+Uses FIVE Brevo accounts (300/day each). Construction gets 2 accounts (600/day),
+the other 3 categories get 1 account each (300/day). All 4 categories are sent
+every day — no rotation needed.
 
 ## How it works
 
 - `leads/*.csv` — the master lead lists per category (email, first name, company).
-- `progress.json` — tracks how far each category has progressed and whose turn it is
-  today. Updated and committed back to the repo after every run.
-- `send_daily_batch.py` — picks THREE consecutive categories each day.
-  Account 1 sends 300 leads from category A (templates: Construction=7,
-  Banking=6, Accounting=8, Automotive=9). Account 2 sends 300 leads from
-  category B (templates: Construction=20, Banking=23, Accounting=21,
-  Automotive=22). Account 3 sends 300 leads from category C (templates:
-  Construction=8, Banking=5, Accounting=6, Automotive=7). Advances the
-  cycle by 3 each day.
+- `progress.json` — tracks how far each category has progressed. Updated and
+  committed back to the repo after every run.
+- `send_daily_batch.py` — sends all 4 categories every day:
+  - Account 1 → Construction (300/day, template 7, sender: admin@codemypixel.com)
+  - Account 2 → Banking (300/day, template 23, sender: sabbir@team.codemypixel.com)
+  - Account 3 → Accounting (300/day, template 6, sender: akash@codemypixel.com)
+  - Account 4 → Automotive (300/day, template 4, sender: neel@connect.codemypixel.com)
+  - Account 5 → Construction (300/day, template 2, sender: pravas@app.codemypixel.com)
+  Construction gets 600/day total (accounts 1 and 5 send consecutive slices).
 - `.github/workflows/daily-send.yml` — GitHub Actions workflow that runs the script
-  every day at 09:00 UTC (edit the cron line to change the time) and commits the
-  updated `progress.json` + logs back to the repo.
+  every day at 09:00 UTC and commits the updated `progress.json` + logs back to repo.
+- `.github/workflows/hourly-stats-update.yml` — Updates Google Sheets dashboard hourly.
 
 ## One-time setup
 
@@ -42,6 +40,8 @@ required once set up.
    - Name: `BREVO_API_KEY` — Value: Brevo API key for account 1 (v3, transactional)
    - Name: `BREVO_API_KEY_2` — Value: Brevo API key for account 2 (v3, transactional)
    - Name: `BREVO_API_KEY_3` — Value: Brevo API key for account 3 (v3, transactional)
+   - Name: `BREVO_API_KEY_4` — Value: Brevo API key for account 4 (v3, transactional)
+   - Name: `BREVO_API_KEY_5` — Value: Brevo API key for account 5 (v3, transactional)
 4. Go to the **Actions** tab and enable workflows if prompted. That's it — from
    here it runs automatically every day, no further action needed.
 

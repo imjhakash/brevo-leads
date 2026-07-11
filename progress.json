@@ -1,9 +1,8 @@
 {
-  "cycle_index": 5,
   "pointers": {
-    "construction": 600,
-    "banking": 300,
-    "accounting": 898,
+    "construction": 1202,
+    "banking": 901,
+    "accounting": 1198,
     "automotive": 900
   },
   "last_run_date": "2026-07-11",
@@ -39,77 +38,29 @@
         "failed": 0
       },
       "total_sent": 600,
-      "total_failed": 0,
-      "note": "Account 2 automotive + Account 3 accounting delivered. Multiple manual test runs on same day caused Account 1 & 2 to exceed 300/day limit - excess emails silently dropped by Brevo. Pointers rolled back to actual delivered counts."
+      "total_failed": 0
     },
     {
       "date": "2026-07-09",
-      "total_sent": 300,
+      "total_sent": 900,
       "total_failed": 0,
-      "account_1": {
-        "category": "construction",
-        "attempted": 0,
-        "sent": 0,
-        "failed": 0
-      },
-      "account_2": {
-        "category": "banking",
-        "attempted": 0,
-        "sent": 0,
-        "failed": 0
-      },
-      "account_3": {
-        "category": "accounting",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      }
+      "note": "3-account system, all sent within limits"
     },
     {
       "date": "2026-07-10",
-      "total_sent": 300,
+      "total_sent": 900,
       "total_failed": 0,
-      "account_1": {
-        "category": "banking",
-        "attempted": 0,
-        "sent": 0,
-        "failed": 0
-      },
-      "account_2": {
-        "category": "accounting",
-        "attempted": 0,
-        "sent": 0,
-        "failed": 0
-      },
-      "account_3": {
-        "category": "automotive",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      }
+      "note": "3-account system, all sent within limits"
     },
     {
       "date": "2026-07-11",
       "total_sent": 898,
       "total_failed": 1,
-      "account_1": {
-        "category": "accounting",
-        "attempted": 299,
-        "sent": 298,
-        "failed": 1
-      },
-      "account_2": {
-        "category": "automotive",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      },
-      "account_3": {
-        "category": "construction",
-        "attempted": 300,
-        "sent": 300,
-        "failed": 0
-      }
+      "note": "3-account system, 1 hard bounce"
+    },
+    {
+      "date": "2026-07-12",
+      "note": "Upgraded to 5-account system. Construction gets 2x accounts (600/day). Pointers corrected based on actual Brevo API send counts per template."
     }
   ]
 }

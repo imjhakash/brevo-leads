@@ -26,6 +26,8 @@ jobs:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           BREVO_API_KEY_2: ${{ secrets.BREVO_API_KEY_2 }}
           BREVO_API_KEY_3: ${{ secrets.BREVO_API_KEY_3 }}
+          BREVO_API_KEY_4: ${{ secrets.BREVO_API_KEY_4 }}
+          BREVO_API_KEY_5: ${{ secrets.BREVO_API_KEY_5 }}
         run: python3 send_daily_batch.py
 
       - name: Commit updated progress + logs
