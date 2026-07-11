@@ -1,16 +1,19 @@
 """
 Hourly stats updater for Google Sheets.
 
-Fetches email activity events from all 3 Brevo accounts and sends them
+Fetches email activity events from all 5 Brevo accounts and sends them
 to a Google Apps Script web app that writes them to a Google Sheet with
-two tabs:
+three tabs:
   - Summary: daily totals per account (sent, delivered, opens, clicks, bounces)
+  - Leads: one row per unique email, color-coded status, no duplicates
   - Detail: per-email events (email, category, event type, timestamp, link)
 
 Environment variables required:
   BREVO_API_KEY    - Brevo transactional API key (account 1)
   BREVO_API_KEY_2  - Brevo transactional API key (account 2)
   BREVO_API_KEY_3  - Brevo transactional API key (account 3)
+  BREVO_API_KEY_4  - Brevo transactional API key (account 4)
+  BREVO_API_KEY_5  - Brevo transactional API key (account 5)
   SHEET_WEBHOOK_URL - Google Apps Script web app URL
   SHEET_AUTH_TOKEN  - Simple auth token to prevent unauthorized POSTs
 """
@@ -27,16 +30,28 @@ API_KEYS = [
     {"label": "Account 1", "key": os.environ.get("BREVO_API_KEY")},
     {"label": "Account 2", "key": os.environ.get("BREVO_API_KEY_2")},
     {"label": "Account 3", "key": os.environ.get("BREVO_API_KEY_3")},
+    {"label": "Account 4", "key": os.environ.get("BREVO_API_KEY_4")},
+    {"label": "Account 5", "key": os.environ.get("BREVO_API_KEY_5")},
 ]
 
 SHEET_WEBHOOK_URL = os.environ.get("SHEET_WEBHOOK_URL")
 SHEET_AUTH_TOKEN = os.environ.get("SHEET_AUTH_TOKEN", "cmp-lead-stats-2026")
 
 # Template ID to category mapping (reverse lookup)
+# Account 1: 7=Construction, 6=Banking, 8=Accounting, 9=Automotive
+# Account 2: 20=Construction, 23=Banking, 21=Accounting, 22=Automotive
+# Account 3: 8=Construction, 5=Banking, 6=Accounting, 7=Automotive
+# Account 4: 2=Construction, 1=Banking, 3=Accounting, 4=Automotive
+# Account 5: 2=Construction, 1=Banking, 3=Accounting, 4=Automotive
 TEMPLATE_TO_CATEGORY = {
-    7: "Construction", 6: "Banking", 8: "Accounting", 9: "Automotive",       # Account 1
-    20: "Construction", 23: "Banking", 21: "Accounting", 22: "Automotive",    # Account 2
-    8: "Construction", 5: "Banking", 6: "Accounting", 7: "Automotive",        # Account 3
+    # Account 1
+    7: "Construction", 6: "Banking", 8: "Accounting", 9: "Automotive",
+    # Account 2
+    20: "Construction", 23: "Banking", 21: "Accounting", 22: "Automotive",
+    # Account 3
+    8: "Construction", 5: "Banking", 6: "Accounting", 7: "Automotive",
+    # Account 4 & 5 (same template IDs)
+    1: "Banking", 2: "Construction", 3: "Accounting", 4: "Automotive",
 }
 
 
@@ -91,7 +106,7 @@ def get_sent_emails(api_key, template_ids, limit=1000):
 
 
 def collect_summary():
-    """Collect aggregated stats from all 3 accounts for today and yesterday."""
+    """Collect aggregated stats from all 5 accounts for today and yesterday."""
     today = date.today().strftime("%Y-%m-%d")
     yesterday = (date.today() - timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -128,7 +143,7 @@ def collect_summary():
 
 
 def collect_detail_events():
-    """Collect per-email events from all 3 accounts."""
+    """Collect per-email events from all 5 accounts."""
     all_events = []
     for acct in API_KEYS:
         if not acct["key"]:
@@ -154,12 +169,14 @@ def collect_detail_events():
 
 
 def collect_sent_emails():
-    """Collect all sent transactional emails from all 3 accounts."""
+    """Collect all sent transactional emails from all 5 accounts."""
     # Template IDs per account
     ACCOUNT_TEMPLATES = {
         "Account 1": [7, 6, 8, 9],
         "Account 2": [20, 23, 21, 22],
         "Account 3": [8, 5, 6, 7],
+        "Account 4": [2, 1, 3, 4],
+        "Account 5": [2, 1, 3, 4],
     }
     all_sent = []
     for acct in API_KEYS:
