@@ -1,0 +1,10 @@
+{
+  "category": "automotive",
+  "account": "4",
+  "attempted": 300,
+  "sent": 300,
+  "failed": 0,
+  "failures": [],
+  "pointer_before": 2100,
+  "pointer_after": 2400
+}
