@@ -358,8 +358,37 @@ def build_template_html(category):
     return html
 
 
+def update_template(api_key, template_id, sender_email, sender_name, template_name, subject, html_content):
+    """Update an existing template in Brevo via API. Returns True on success."""
+    headers = {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "api-key": api_key,
+    }
+    body = {
+        "sender": {"name": sender_name, "email": sender_email},
+        "templateName": template_name,
+        "htmlContent": html_content,
+        "subject": subject,
+        "isActive": True,
+    }
+    data = json.dumps(body).encode("utf-8")
+    req = urllib.request.Request(f"{BASE_URL}/smtp/templates/{template_id}", data=data, headers=headers, method="PUT")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            print(f"  Updated template '{template_name}' (ID: {template_id})")
+            return True
+    except urllib.error.HTTPError as e:
+        err = e.read().decode("utf-8", errors="ignore")
+        print(f"  ERROR updating template {template_id}: {e.code} {err}")
+        return False
+    except Exception as e:
+        print(f"  ERROR updating template {template_id}: {e}")
+        return False
+
+
 def create_template(api_key, sender_email, sender_name, template_name, subject, html_content):
-    """Create a template in Brevo via API. Returns the template ID."""
+    """Create a new template in Brevo via API. Returns the template ID."""
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
@@ -412,24 +441,48 @@ def main():
         print(f"  Template: {acct['template_name']}")
 
         html = build_template_html(acct["category"])
-        template_id = create_template(
-            api_key,
-            acct["sender_email"],
-            acct["sender_name"],
-            acct["template_name"],
-            acct["subject"],
-            html,
-        )
+        key = f"account_{i}"
+        existing_id = template_ids.get(key, {}).get("template_id")
 
-        if template_id:
-            key = f"account_{i}"
-            template_ids[key] = {
-                "template_id": template_id,
-                "category": acct["category"],
-                "account_label": str(i),
-                "sender_email": acct["sender_email"],
-                "sender_name": acct["sender_name"],
-            }
+        if existing_id:
+            # Update existing template
+            print(f"  Existing template found (ID: {existing_id}), updating...")
+            success = update_template(
+                api_key,
+                existing_id,
+                acct["sender_email"],
+                acct["sender_name"],
+                acct["template_name"],
+                acct["subject"],
+                html,
+            )
+            if success:
+                template_ids[key] = {
+                    "template_id": existing_id,
+                    "category": acct["category"],
+                    "account_label": str(i),
+                    "sender_email": acct["sender_email"],
+                    "sender_name": acct["sender_name"],
+                }
+        else:
+            # Create new template
+            print(f"  No existing template, creating new...")
+            template_id = create_template(
+                api_key,
+                acct["sender_email"],
+                acct["sender_name"],
+                acct["template_name"],
+                acct["subject"],
+                html,
+            )
+            if template_id:
+                template_ids[key] = {
+                    "template_id": template_id,
+                    "category": acct["category"],
+                    "account_label": str(i),
+                    "sender_email": acct["sender_email"],
+                    "sender_name": acct["sender_name"],
+                }
         print()
 
     # Save template IDs
