@@ -6,11 +6,11 @@ Uses FIVE Brevo accounts to send 1500 emails per day.
   - Building Materials      → 2 accounts (600/day)
   - Apparel & Fashion       → 1 account  (300/day)
 
-Each email includes:
-  - Personalized HTML body (name + company)
+Each email uses a Brevo template (created via create_templates.py) with:
+  - Personalized variables ({{params.FIRSTNAME}}, {{params.COMPANY}})
   - Sector-specific AI Automation Report PDF attachment
-  - Founder photo inline image
-  - Booking link (cal.com)
+  - Founder photo inline image (in template)
+  - Booking link (cal.com) (in template)
 
 SAFEGUARDS:
   1. Same-day re-run protection: checks progress.json "last_run_date" and exits
@@ -18,6 +18,11 @@ SAFEGUARDS:
   2. Brevo daily quota check: queries each account's actual sent count today
      via Brevo API before sending. Skips accounts that already hit 300/day.
   3. Pointer advances by actual sent count, not attempted count.
+
+PREREQUISITE:
+  Run the "Create Brevo Templates" workflow ONCE before using this script.
+  This creates the email templates in your Brevo accounts and saves the IDs
+  to template_ids.json.
 
 Environment variables required:
   BREVO_API_KEY    - Brevo account 1 (Healthcare)
@@ -40,6 +45,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LEADS_DIR = os.path.join(BASE_DIR, "leads")
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 PROGRESS_PATH = os.path.join(BASE_DIR, "progress.json")
+TEMPLATE_IDS_PATH = os.path.join(BASE_DIR, "template_ids.json")
 LOG_DIR = os.path.join(BASE_DIR, "logs")
 
 API_KEY_1 = os.environ.get("BREVO_API_KEY")
@@ -56,30 +62,12 @@ for i, key in enumerate([API_KEY_1, API_KEY_2, API_KEY_3, API_KEY_4, API_KEY_5],
 BASE_URL = "https://api.brevo.com/v3"
 BREVO_DAILY_LIMIT = 300
 FORCE = "--force" in sys.argv
-BOOKING_URL = "https://cal.com/team-cmp-tk2uvf/from-website"
-
-# Founder image hosted in public repo (raw GitHub URL)
-FOUNDER_IMAGE_URL = "https://raw.githubusercontent.com/imjhakash/brevo-leads/main/assets/founder.png"
 
 # PDF attachment paths per category
 PDF_PATHS = {
     "healthcare": os.path.join(ASSETS_DIR, "healthcare-report.pdf"),
     "building_materials": os.path.join(ASSETS_DIR, "building-materials-report.pdf"),
     "fashion": os.path.join(ASSETS_DIR, "fashion-report.pdf"),
-}
-
-# Category display names for email content
-CATEGORY_NAMES = {
-    "healthcare": "Healthcare & Wellness",
-    "building_materials": "Building Materials",
-    "fashion": "Apparel & Fashion",
-}
-
-# Subject lines per category
-SUBJECTS = {
-    "healthcare": "We researched the Healthcare & Wellness market and found something interesting",
-    "building_materials": "We researched the Building Materials market and found something interesting",
-    "fashion": "We researched the Apparel & Fashion market and found something interesting",
 }
 
 # PDF attachment filenames (what the recipient sees)
@@ -89,43 +77,65 @@ PDF_FILENAMES = {
     "fashion": "AI-Automation-Report-Apparel-Fashion.pdf",
 }
 
+
+def load_template_ids():
+    """Load template IDs from template_ids.json (created by create_templates.py)."""
+    if not os.path.exists(TEMPLATE_IDS_PATH):
+        print("ERROR: template_ids.json not found!", file=sys.stderr)
+        print("Run the 'Create Brevo Templates' workflow first to create templates.", file=sys.stderr)
+        sys.exit(1)
+    with open(TEMPLATE_IDS_PATH) as f:
+        return json.load(f)
+
+
 # Category definitions with account assignments
 # Healthcare: Accounts 1 & 5 (600/day)
 # Building Materials: Accounts 2 & 3 (600/day)
 # Fashion: Account 4 (300/day)
-CATEGORIES = {
-    "healthcare": {
-        "file": "healthcare.csv",
-        "accounts": [
-            {"label": "1", "api_key": API_KEY_1},
-            {"label": "5", "api_key": API_KEY_5},
-        ],
-    },
-    "building_materials": {
-        "file": "building_materials.csv",
-        "accounts": [
-            {"label": "2", "api_key": API_KEY_2},
-            {"label": "3", "api_key": API_KEY_3},
-        ],
-    },
-    "fashion": {
-        "file": "fashion.csv",
-        "accounts": [
-            {"label": "4", "api_key": API_KEY_4},
-        ],
-    },
-}
+# Template IDs are loaded from template_ids.json at runtime
+def build_categories(template_ids):
+    """Build CATEGORIES dict with template IDs from template_ids.json."""
+    cats = {
+        "healthcare": {
+            "file": "healthcare.csv",
+            "accounts": [
+                {"label": "1", "api_key": API_KEY_1, "template_id": template_ids.get("account_1", {}).get("template_id")},
+                {"label": "5", "api_key": API_KEY_5, "template_id": template_ids.get("account_5", {}).get("template_id")},
+            ],
+        },
+        "building_materials": {
+            "file": "building_materials.csv",
+            "accounts": [
+                {"label": "2", "api_key": API_KEY_2, "template_id": template_ids.get("account_2", {}).get("template_id")},
+                {"label": "3", "api_key": API_KEY_3, "template_id": template_ids.get("account_3", {}).get("template_id")},
+            ],
+        },
+        "fashion": {
+            "file": "fashion.csv",
+            "accounts": [
+                {"label": "4", "api_key": API_KEY_4, "template_id": template_ids.get("account_4", {}).get("template_id")},
+            ],
+        },
+    }
+    # Validate all template IDs are present
+    for cat_key, cat_config in cats.items():
+        for acct in cat_config["accounts"]:
+            if not acct["template_id"]:
+                print(f"ERROR: Missing template ID for account {acct['label']} (category: {cat_key})", file=sys.stderr)
+                print("Run the 'Create Brevo Templates' workflow first.", file=sys.stderr)
+                sys.exit(1)
+    return cats
 
 
 def make_headers(api_key):
     return {"accept": "application/json", "content-type": "application/json", "api-key": api_key}
 
 
-def load_progress():
+def load_progress(categories):
     if os.path.exists(PROGRESS_PATH):
         with open(PROGRESS_PATH) as f:
             return json.load(f)
-    return {"pointers": {c: 0 for c in CATEGORIES}, "history": [], "last_run_date": None}
+    return {"pointers": {c: 0 for c in categories}, "history": [], "last_run_date": None}
 
 
 def save_progress(progress):
@@ -176,154 +186,11 @@ def load_pdf_attachment(category):
     return content
 
 
-def build_html_email(recipient, category):
-    """Build personalized HTML email body for a recipient."""
-    name = recipient["firstname"]
-    company = recipient["company"]
-    cat_name = CATEGORY_NAMES.get(category, category)
-
-    html = f"""<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="margin:0;padding:0;background-color:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f5f7;padding:24px 0;">
-    <tr>
-      <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-
-          <!-- Founder image header -->
-          <tr>
-            <td align="center" style="padding:32px 40px 16px 40px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);">
-              <img src="{FOUNDER_IMAGE_URL}" alt="Johirul Hoq Akash" width="100" height="100"
-                style="border-radius:50%;border:3px solid #3b82f6;object-fit:cover;display:block;margin-bottom:16px;" />
-              <p style="margin:0;color:#94a3b8;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">Johirul Hoq Akash</p>
-              <p style="margin:4px 0 0 0;color:#e2e8f0;font-size:15px;">Founder, CodeMyPixel</p>
-            </td>
-          </tr>
-
-          <!-- Email body -->
-          <tr>
-            <td style="padding:36px 40px 8px 40px;">
-              <h2 style="margin:0 0 8px 0;color:#0f172a;font-size:22px;font-weight:700;">
-                Hi {name},
-              </h2>
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                I know you're busy, so I'll keep this short &mdash; just 2 minutes, I promise.
-              </p>
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                I'm <strong style="color:#0f172a;">Johirul Hoq Akash</strong>, founder of
-                <strong style="color:#0f172a;">CodeMyPixel</strong>. My team and I researched the
-                <strong style="color:#2563eb;">{cat_name}</strong> market and found some interesting gaps
-                that companies like <strong style="color:#0f172a;">{company}</strong> are likely facing right now.
-              </p>
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                We put together a short <strong style="color:#0f172a;">4-page report</strong> &mdash; attached to this
-                email as a PDF. It's concise, easy to understand, and directly relevant to your industry.
-              </p>
-
-              <!-- Report highlight box -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f9ff;border-left:4px solid #2563eb;border-radius:8px;margin:20px 0;">
-                <tr>
-                  <td style="padding:20px 24px;">
-                    <p style="margin:0 0 6px 0;color:#1e40af;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">
-                      &#128206; Attached: AI Automation Report
-                    </p>
-                    <p style="margin:0;color:#475569;font-size:14px;line-height:1.6;">
-                      {cat_name} &mdash; 4 pages covering the biggest automation gaps we found,
-                      what they cost businesses, and how to close them.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                As an automation developer team, we can help you close those gaps &mdash; saving time,
-                reducing manual work, and letting your team focus on what matters.
-              </p>
-              <p style="margin:0 0 24px 0;color:#475569;font-size:15px;line-height:1.7;">
-                No pressure at all. If it's interesting, grab a time that works for you:
-              </p>
-            </td>
-          </tr>
-
-          <!-- CTA button -->
-          <tr>
-            <td style="padding:0 40px 32px 40px;" align="center">
-              <!--[if mso]>
-              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
-                href="{BOOKING_URL}" style="height:52px;v-text-anchor:middle;width:280px;" arcsize="12%"
-                strokecolor="#2563eb" fillcolor="#2563eb">
-                <w:anchorlock/>
-                <center style="color:#ffffff;font-family:sans-serif;font-size:16px;font-weight:bold;">
-                  Book Your Preferred Time
-                </center>
-              </v:roundrect>
-              <![endif]-->
-              <!--[if !mso]><!-->
-              <a href="{BOOKING_URL}"
-                style="display:inline-block;padding:15px 36px;background-color:#2563eb;color:#ffffff;
-                       text-decoration:none;font-size:16px;font-weight:600;border-radius:10px;
-                       box-shadow:0 2px 4px rgba(37,99,235,0.3);">
-                Book Your Preferred Time
-              </a>
-              <!--<![endif]-->
-            </td>
-          </tr>
-
-          <!-- Signature -->
-          <tr>
-            <td style="padding:0 40px 36px 40px;border-top:1px solid #e2e8f0;">
-              <p style="margin:20px 0 4px 0;color:#475569;font-size:14px;line-height:1.6;">
-                Best regards,
-              </p>
-              <p style="margin:0 0 2px 0;color:#0f172a;font-size:15px;font-weight:600;">
-                Johirul Hoq Akash
-              </p>
-              <p style="margin:0 0 2px 0;color:#64748b;font-size:13px;">
-                Founder, CodeMyPixel
-              </p>
-              <p style="margin:0;color:#64748b;font-size:13px;">
-                <a href="{BOOKING_URL}" style="color:#2563eb;text-decoration:none;">cal.com/team-cmp-tk2uvf/from-website</a>
-              </p>
-            </td>
-          </tr>
-
-        </table>
-
-        <!-- Footer -->
-        <table width="600" cellpadding="0" cellspacing="0">
-          <tr>
-            <td align="center" style="padding:20px 40px;">
-              <p style="margin:0;color:#94a3b8;font-size:12px;line-height:1.5;">
-                CodeMyPixel &middot; AI Automation for Growing Businesses<br>
-                This email was sent to you because we believe our research is relevant to {company}.
-              </p>
-            </td>
-          </tr>
-        </table>
-
-      </td>
-    </tr>
-  </table>
-
-</body>
-</html>"""
-    return html
-
-
-def send_one(recipient, category, api_key, pdf_b64):
-    """Send a single personalized email with PDF attachment."""
+def send_one(template_id, recipient, category, api_key, pdf_b64):
+    """Send a single email using a Brevo template with PDF attachment."""
     headers = make_headers(api_key)
-    subject = SUBJECTS.get(category, "We researched your market and found something interesting")
-    html_content = build_html_email(recipient, category)
-
     body = {
-        "subject": subject,
-        "htmlContent": html_content,
+        "templateId": template_id,
         "to": [{"email": recipient["email"], "name": recipient["firstname"]}],
         "params": {"FIRSTNAME": recipient["firstname"], "COMPANY": recipient["company"]},
         "tags": [category],
@@ -351,12 +218,12 @@ def send_one(recipient, category, api_key, pdf_b64):
     return False, "failed after retries"
 
 
-def send_batch(leads, category, api_key, account_label, max_sends, pdf_b64):
+def send_batch(leads, template_id, category, api_key, account_label, max_sends, pdf_b64):
     """Send up to max_sends emails from a batch of leads."""
     sent, failed = 0, 0
     fail_log = []
     for lead in leads[:max_sends]:
-        ok, result = send_one(lead, category, api_key, pdf_b64)
+        ok, result = send_one(template_id, lead, category, api_key, pdf_b64)
         if ok:
             sent += 1
         else:
@@ -367,7 +234,14 @@ def send_batch(leads, category, api_key, account_label, max_sends, pdf_b64):
 
 
 def main():
-    progress = load_progress()
+    # Load template IDs
+    template_ids = load_template_ids()
+    print(f"Loaded template IDs: {json.dumps({k: v.get('template_id') for k, v in template_ids.items()})}")
+
+    # Build categories with template IDs
+    categories = build_categories(template_ids)
+
+    progress = load_progress(categories)
     today = date.today().isoformat()
 
     # SAFEGUARD 1: Same-day re-run protection
@@ -382,7 +256,7 @@ def main():
 
     all_results = []
 
-    for cat_key, cat_config in CATEGORIES.items():
+    for cat_key, cat_config in categories.items():
         leads = load_leads(cat_config["file"])
         pointer = progress["pointers"].get(cat_key, 0)
         accounts = cat_config["accounts"]
@@ -423,10 +297,10 @@ def main():
                 })
                 continue
 
-            print(f"  [Account {acct['label']}] Sending {len(batch)} leads (Brevo used: {sent_today}/{BREVO_DAILY_LIMIT})")
+            print(f"  [Account {acct['label']}] Sending {len(batch)} leads (template {acct['template_id']}, Brevo used: {sent_today}/{BREVO_DAILY_LIMIT})")
 
             sent, failed, fail_log = send_batch(
-                batch, cat_key, acct["api_key"], acct["label"], acct["remaining"], pdf_b64
+                batch, acct["template_id"], cat_key, acct["api_key"], acct["label"], acct["remaining"], pdf_b64
             )
 
             current_offset += sent
