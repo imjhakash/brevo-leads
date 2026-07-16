@@ -26,6 +26,13 @@ BASE_URL = "https://api.brevo.com/v3"
 FOUNDER_IMAGE_URL = "https://raw.githubusercontent.com/imjhakash/brevo-leads/main/assets/founder.png"
 BOOKING_URL = "https://cal.com/team-cmp-tk2uvf/from-website"
 
+# Google Drive PDF links per category
+PDF_LINKS = {
+    "healthcare": "https://drive.google.com/file/d/1YacIAJuoxoE3zZWdpmta9-A2fZArOLnp/view?usp=sharing",
+    "building_materials": "https://drive.google.com/file/d/1q3V2x7u-PMXHxR4XZumvHT5EvJYufO5O/view?usp=sharing",
+    "fashion": "https://drive.google.com/file/d/1A_bGfA_DO-mUeTrx40DcKWazGIg7vihr/view?usp=sharing",
+}
+
 # Account configs: (env var name, sender email, sender name, category, template name, subject)
 ACCOUNTS = [
     {
@@ -77,74 +84,210 @@ CATEGORY_NAMES = {
 }
 
 
+def build_stat_card(number, label, accent="#2563eb"):
+    """Build a single stat card HTML."""
+    return f"""<td style="padding:0 8px;width:33.33%;">
+                <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;">
+                  <tr>
+                    <td align="center" style="padding:16px 8px;">
+                      <p style="margin:0;font-size:28px;font-weight:800;color:{accent};line-height:1.1;">{number}</p>
+                      <p style="margin:6px 0 0 0;font-size:11px;color:#64748b;line-height:1.4;">{label}</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>"""
+
+
 def build_template_html(category):
     """Build HTML email template using Brevo variables {{params.FIRSTNAME}} and {{params.COMPANY}}."""
     cat_name = CATEGORY_NAMES.get(category, category)
+    pdf_link = PDF_LINKS.get(category, "")
+
+    # Category-specific stats and content
+    if category == "healthcare":
+        stats_html = (
+            build_stat_card("40%", "of clinician hours consumed by admin", "#ef4444")
+            + build_stat_card("5.3 hrs", "recovered daily with AI scribes", "#10b981")
+            + build_stat_card("$31B", "spent yearly on prior-auth paperwork", "#f59e0b")
+        )
+        hook = "Your clinicians spend <strong>2 hours on paperwork for every 1 hour with a patient</strong>. We found a way to flip that ratio."
+        summary_points = [
+            ("Ambient AI scribes", "Cut patient encounter time from 41 minutes to 16 minutes &mdash; recovering 5+ hours of clinical capacity every day."),
+            ("Prior-authorization automation", "Turnaround from 5&ndash;7 days down to 24&ndash;48 hours, automating up to 75% of manual admin tasks."),
+            ("Predictive scheduling & RCM", "30&ndash;45% reduction in no-show rates and 98%+ coding accuracy with automated billing verification."),
+        ]
+        report_title = "AI Automation Briefing: Healthcare & Wellness"
+        report_subtitle = "How ambient AI is recovering 5+ hours per day for clinics like yours"
+    elif category == "building_materials":
+        stats_html = (
+            build_stat_card("36%", "of workweek lost to manual admin", "#ef4444")
+            + build_stat_card("60%", "faster order processing with AI", "#10b981")
+            + build_stat_card("99%+", "order accuracy after automation", "#2563eb")
+        )
+        hook = "Your sales reps spend <strong>only 1/3 of their day actually selling</strong>. The rest is eaten by manual order entry and invoice reconciliation."
+        summary_points = [
+            ("Intelligent Document Processing", "Turns a 5-minute manual order entry into a 100-millisecond automated extraction &mdash; reclaiming ~5 hours of daily labor."),
+            ("Automated 3-way AP matching", "Cuts accounts payable from 6&ndash;7 hours daily to under 1 hour, protecting early-payment discounts."),
+            ("Predictive demand forecasting", "40% labor reduction in sourcing and 95% forecast accuracy &mdash; no more spreadsheet guessing."),
+        ]
+        report_title = "AI Automation Briefing: Building Materials Distribution"
+        report_subtitle = "How AI-powered order processing cuts cycle times by 60%"
+    else:  # fashion
+        stats_html = (
+            build_stat_card("68%", "of workweek on operations, not growth", "#ef4444")
+            + build_stat_card("91%", "less time on visual production with AI", "#10b981")
+            + build_stat_card("98%+", "cost reduction per finished image", "#2563eb")
+        )
+        hook = "You spend <strong>68% of your week running the business. Only 32% grows it.</strong> We found where the time goes and how to get it back."
+        summary_points = [
+            ("Generative AI visual production", "Turns a 3-week photoshoot into a 1-hour render &mdash; cutting cost per image from $84 to ~$1."),
+            ("AI catalog enrichment", "Auto-generates SEO descriptions, tags, and sizing data 5x faster than manual entry."),
+            ("Conversational commerce AI", "Resolves 70% of routine customer questions autonomously, cutting support costs by 39%."),
+        ]
+        report_title = "AI Automation Briefing: Apparel & Fashion E-Commerce"
+        report_subtitle = "How generative AI cuts visual production costs by 98%"
+
+    # Build summary points HTML
+    summary_html = ""
+    for i, (title, desc) in enumerate(summary_points, 1):
+        summary_html += f"""
+              <tr>
+                <td style="padding:0 0 16px 0;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td valign="top" style="width:36px;padding-right:12px;">
+                        <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3fc8);color:#ffffff;font-size:13px;font-weight:700;text-align:center;line-height:28px;">{i}</div>
+                      </td>
+                      <td valign="top">
+                        <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">{title}</p>
+                        <p style="margin:0;font-size:13px;color:#64748b;line-height:1.6;">{desc}</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>"""
 
     html = f"""<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We researched the {cat_name} market</title>
 </head>
-<body style="margin:0;padding:0;background-color:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<body style="margin:0;padding:0;background-color:#eef2f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
 
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f5f7;padding:24px 0;">
+  <!-- Preheader (hidden) -->
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
+    We researched the {cat_name} market and found gaps that companies like yours are facing right now. 2-minute read + 4-page report inside.
+  </div>
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#eef2f6;padding:28px 12px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
 
-          <!-- Founder image header -->
+        <!-- Main card -->
+        <table width="620" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(15,23,42,0.08);">
+
+          <!-- Hero header with gradient -->
           <tr>
-            <td align="center" style="padding:32px 40px 16px 40px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);">
-              <img src="{FOUNDER_IMAGE_URL}" alt="Johirul Hoq Akash" width="100" height="100"
-                style="border-radius:50%;border:3px solid #3b82f6;object-fit:cover;display:block;margin-bottom:16px;" />
-              <p style="margin:0;color:#94a3b8;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">Johirul Hoq Akash</p>
-              <p style="margin:4px 0 0 0;color:#e2e8f0;font-size:15px;">Founder, CodeMyPixel</p>
+            <td style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#2563eb 100%);padding:40px 40px 32px 40px;" align="center">
+              <!-- Founder image -->
+              <img src="{FOUNDER_IMAGE_URL}" alt="Johirul Hoq Akash" width="88" height="88"
+                style="border-radius:50%;border:3px solid rgba(255,255,255,0.25);object-fit:cover;display:block;margin-bottom:14px;" />
+              <p style="margin:0;color:#94a3b8;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;">CodeMyPixel Research</p>
+              <p style="margin:6px 0 0 0;color:#f8fafc;font-size:18px;font-weight:600;">Johirul Hoq Akash &middot; Founder</p>
             </td>
           </tr>
 
-          <!-- Email body -->
+          <!-- Greeting + hook -->
           <tr>
-            <td style="padding:36px 40px 8px 40px;">
-              <h2 style="margin:0 0 8px 0;color:#0f172a;font-size:22px;font-weight:700;">
+            <td style="padding:36px 40px 0 40px;">
+              <h1 style="margin:0 0 12px 0;color:#0f172a;font-size:24px;font-weight:800;letter-spacing:-0.5px;">
                 Hi {{{{params.FIRSTNAME}}}},
-              </h2>
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                I know you're busy, so I'll keep this short &mdash; just 2 minutes, I promise.
+              </h1>
+              <p style="margin:0 0 20px 0;color:#334155;font-size:15px;line-height:1.75;">
+                {hook}
               </p>
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                I'm <strong style="color:#0f172a;">Johirul Hoq Akash</strong>, founder of
-                <strong style="color:#0f172a;">CodeMyPixel</strong>. My team and I researched the
-                <strong style="color:#2563eb;">{cat_name}</strong> market and found some interesting gaps
-                that companies like <strong style="color:#0f172a;">{{{{params.COMPANY}}}}</strong> are likely facing right now.
-              </p>
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                We put together a short <strong style="color:#0f172a;">4-page report</strong> &mdash; attached to this
-                email as a PDF. It's concise, easy to understand, and directly relevant to your industry.
-              </p>
+            </td>
+          </tr>
 
-              <!-- Report highlight box -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f9ff;border-left:4px solid #2563eb;border-radius:8px;margin:20px 0;">
+          <!-- Stat cards row -->
+          <tr>
+            <td style="padding:0 40px 28px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="padding:20px 24px;">
-                    <p style="margin:0 0 6px 0;color:#1e40af;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">
-                      &#128206; Attached: AI Automation Report
-                    </p>
-                    <p style="margin:0;color:#475569;font-size:14px;line-height:1.6;">
-                      {cat_name} &mdash; 4 pages covering the biggest automation gaps we found,
-                      what they cost businesses, and how to close them.
-                    </p>
+                  {stats_html}
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="padding:0 40px;">
+              <div style="height:1px;background:linear-gradient(90deg,transparent,#e2e8f0,transparent);"></div>
+            </td>
+          </tr>
+
+          <!-- Report section -->
+          <tr>
+            <td style="padding:28px 40px 8px 40px;">
+              <p style="margin:0 0 6px 0;color:#2563eb;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">The Report</p>
+              <h2 style="margin:0 0 8px 0;color:#0f172a;font-size:18px;font-weight:700;">{report_title}</h2>
+              <p style="margin:0 0 20px 0;color:#64748b;font-size:13px;font-style:italic;">{report_subtitle}</p>
+            </td>
+          </tr>
+
+          <!-- Summary points -->
+          <tr>
+            <td style="padding:0 40px 24px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                {summary_html}
+              </table>
+            </td>
+          </tr>
+
+          <!-- PDF link box -->
+          <tr>
+            <td style="padding:0 40px 28px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #bae6fd;border-radius:12px;">
+                <tr>
+                  <td style="padding:22px 24px;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td valign="middle">
+                          <p style="margin:0 0 4px 0;color:#0c4a6e;font-size:14px;font-weight:700;">&#128206; Read the full 4-page report</p>
+                          <p style="margin:0 0 12px 0;color:#0369a1;font-size:12px;line-height:1.5;">Open the PDF to see the complete data, sources, and real-world impact numbers for the {cat_name} sector.</p>
+                          <a href="{pdf_link}" style="display:inline-block;padding:10px 24px;background-color:#2563eb;color:#ffffff;text-decoration:none;font-size:13px;font-weight:600;border-radius:8px;">
+                            Open Report PDF &rarr;
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                 </tr>
               </table>
+            </td>
+          </tr>
 
-              <p style="margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.7;">
-                As an automation developer team, we can help you close those gaps &mdash; saving time,
-                reducing manual work, and letting your team focus on what matters.
+          <!-- Personal note -->
+          <tr>
+            <td style="padding:0 40px 8px 40px;">
+              <div style="height:1px;background:linear-gradient(90deg,transparent,#e2e8f0,transparent);"></div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 40px 8px 40px;">
+              <p style="margin:0 0 12px 0;color:#334155;font-size:15px;line-height:1.75;">
+                I know you're busy at {{{{params.COMPANY}}}}, so I'll keep this short &mdash; just 2 minutes.
               </p>
-              <p style="margin:0 0 24px 0;color:#475569;font-size:15px;line-height:1.7;">
-                No pressure at all. If it's interesting, grab a time that works for you:
+              <p style="margin:0 0 12px 0;color:#334155;font-size:15px;line-height:1.75;">
+                I'm <strong style="color:#0f172a;">Johirul Hoq Akash</strong>, founder of <strong style="color:#0f172a;">CodeMyPixel</strong>.
+                We're an automation developer team that builds custom AI systems plugged directly into your existing workflow &mdash;
+                no off-the-shelf guesswork, just solutions built around your business.
+              </p>
+              <p style="margin:0 0 24px 0;color:#334155;font-size:15px;line-height:1.75;">
+                If any of this resonates, I'd love to show you what this could look like for {{{{params.COMPANY}}}}. No pressure &mdash; just pick a time that works:
               </p>
             </td>
           </tr>
@@ -154,7 +297,7 @@ def build_template_html(category):
             <td style="padding:0 40px 32px 40px;" align="center">
               <!--[if mso]>
               <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
-                href="{BOOKING_URL}" style="height:52px;v-text-anchor:middle;width:280px;" arcsize="12%"
+                href="{BOOKING_URL}" style="height:54px;v-text-anchor:middle;width:300px;" arcsize="11%"
                 strokecolor="#2563eb" fillcolor="#2563eb">
                 <w:anchorlock/>
                 <center style="color:#ffffff;font-family:sans-serif;font-size:16px;font-weight:bold;">
@@ -164,10 +307,10 @@ def build_template_html(category):
               <![endif]-->
               <!--[if !mso]><!-->
               <a href="{BOOKING_URL}"
-                style="display:inline-block;padding:15px 36px;background-color:#2563eb;color:#ffffff;
-                       text-decoration:none;font-size:16px;font-weight:600;border-radius:10px;
-                       box-shadow:0 2px 4px rgba(37,99,235,0.3);">
-                Book Your Preferred Time
+                style="display:inline-block;padding:16px 40px;background:linear-gradient(135deg,#2563eb,#7c3fc8);color:#ffffff;
+                       text-decoration:none;font-size:16px;font-weight:700;border-radius:12px;
+                       box-shadow:0 4px 12px rgba(37,99,235,0.35);">
+                Book Your Preferred Time &rarr;
               </a>
               <!--<![endif]-->
             </td>
@@ -175,31 +318,32 @@ def build_template_html(category):
 
           <!-- Signature -->
           <tr>
-            <td style="padding:0 40px 36px 40px;border-top:1px solid #e2e8f0;">
-              <p style="margin:20px 0 4px 0;color:#475569;font-size:14px;line-height:1.6;">
-                Best regards,
-              </p>
-              <p style="margin:0 0 2px 0;color:#0f172a;font-size:15px;font-weight:600;">
-                Johirul Hoq Akash
-              </p>
-              <p style="margin:0 0 2px 0;color:#64748b;font-size:13px;">
-                Founder, CodeMyPixel
-              </p>
-              <p style="margin:0;color:#64748b;font-size:13px;">
-                <a href="{BOOKING_URL}" style="color:#2563eb;text-decoration:none;">cal.com/team-cmp-tk2uvf/from-website</a>
-              </p>
+            <td style="padding:0 40px 36px 40px;border-top:1px solid #f1f5f9;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding-top:24px;">
+                    <p style="margin:0 0 4px 0;color:#64748b;font-size:14px;">Best regards,</p>
+                    <p style="margin:0 0 2px 0;color:#0f172a;font-size:15px;font-weight:700;">Johirul Hoq Akash</p>
+                    <p style="margin:0 0 2px 0;color:#64748b;font-size:13px;">Founder, CodeMyPixel</p>
+                    <p style="margin:0;color:#64748b;font-size:13px;">
+                      <a href="{BOOKING_URL}" style="color:#2563eb;text-decoration:none;font-weight:600;">cal.com/team-cmp-tk2uvf/from-website</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
         </table>
 
         <!-- Footer -->
-        <table width="600" cellpadding="0" cellspacing="0">
+        <table width="620" cellpadding="0" cellspacing="0">
           <tr>
             <td align="center" style="padding:20px 40px;">
-              <p style="margin:0;color:#94a3b8;font-size:12px;line-height:1.5;">
-                CodeMyPixel &middot; AI Automation for Growing Businesses<br>
-                This email was sent to you because we believe our research is relevant to {{{{params.COMPANY}}}}.
+              <p style="margin:0;color:#94a3b8;font-size:11px;line-height:1.6;">
+                CodeMyPixel &middot; AI Automation Systems for Growing Businesses<br>
+                This email was sent to you because we believe our research is relevant to {{{{params.COMPANY}}}}.<br>
+                You can read the full report <a href="{pdf_link}" style="color:#94a3b8;text-decoration:underline;">here</a>.
               </p>
             </td>
           </tr>
@@ -234,7 +378,7 @@ def create_template(api_key, sender_email, sender_name, template_name, subject, 
         with urllib.request.urlopen(req, timeout=30) as resp:
             result = json.loads(resp.read())
             template_id = result.get("id")
-            print(f"  Created template '{template_name}' → ID: {template_id}")
+            print(f"  Created template '{template_name}' -> ID: {template_id}")
             return template_id
     except urllib.error.HTTPError as e:
         err = e.read().decode("utf-8", errors="ignore")
