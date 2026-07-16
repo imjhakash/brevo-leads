@@ -1,0 +1,37 @@
+{
+  "account_1": {
+    "template_id": 14,
+    "category": "healthcare",
+    "account_label": "1",
+    "sender_email": "admin@codemypixel.com",
+    "sender_name": "Johirul Hoq Akash"
+  },
+  "account_2": {
+    "template_id": 24,
+    "category": "building_materials",
+    "account_label": "2",
+    "sender_email": "sabbir@team.codemypixel.com",
+    "sender_name": "Johirul Hoq Akash"
+  },
+  "account_3": {
+    "template_id": 9,
+    "category": "building_materials",
+    "account_label": "3",
+    "sender_email": "akash@codemypixel.com",
+    "sender_name": "Johirul Hoq Akash"
+  },
+  "account_4": {
+    "template_id": 5,
+    "category": "fashion",
+    "account_label": "4",
+    "sender_email": "neel@connect.codemypixel.com",
+    "sender_name": "Johirul Hoq Akash"
+  },
+  "account_5": {
+    "template_id": 5,
+    "category": "healthcare",
+    "account_label": "5",
+    "sender_email": "pravas@app.codemypixel.com",
+    "sender_name": "Johirul Hoq Akash"
+  }
+}
