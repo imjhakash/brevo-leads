@@ -13,7 +13,7 @@ import urllib.request
 import urllib.error
 
 BASE_URL = "https://api.brevo.com/v3"
-TEST_EMAIL = "Helloatjh@gmail.com"
+TEST_EMAIL = "helloatjh@gmail.com"
 TEST_FIRSTNAME = "Sarah"
 TEST_COMPANY = "Memorial Sloan Kettering"
 
@@ -77,11 +77,14 @@ try:
     with urllib.request.urlopen(req, timeout=30) as resp:
         result = json.loads(resp.read())
         print(f"\n  ✓ SUCCESS! Email sent.")
+        print(f"  Full Brevo API response:")
+        print(f"  {json.dumps(result, indent=2)}")
         print(f"  Message ID: {result.get('messageId', 'N/A')}")
         print(f"  Check Helloatjh@gmail.com inbox (and spam folder).")
 except urllib.error.HTTPError as e:
     err = e.read().decode("utf-8", errors="ignore")
     print(f"\n  ✗ FAILED: {e.code} {err}", file=sys.stderr)
+    print(f"  Full error response: {err}", file=sys.stderr)
     sys.exit(1)
 except Exception as e:
     print(f"\n  ✗ FAILED: {e}", file=sys.stderr)
