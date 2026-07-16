@@ -1,0 +1,10 @@
+{
+  "category": "construction",
+  "account": "1",
+  "attempted": 300,
+  "sent": 300,
+  "failed": 0,
+  "failures": [],
+  "pointer_before": 3902,
+  "pointer_after": 4202
+}

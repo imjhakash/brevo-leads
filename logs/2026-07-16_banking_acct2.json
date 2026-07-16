@@ -1,0 +1,10 @@
+{
+  "category": "banking",
+  "account": "2",
+  "attempted": 300,
+  "sent": 300,
+  "failed": 0,
+  "failures": [],
+  "pointer_before": 2101,
+  "pointer_after": 2401
+}
