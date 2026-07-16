@@ -8,6 +8,11 @@ three tabs:
   - Leads: one row per unique email, color-coded status, no duplicates
   - Detail: per-email events (email, category, event type, timestamp, link)
 
+Categories are identified via email tags (not template IDs):
+  - healthcare
+  - building_materials
+  - fashion
+
 Environment variables required:
   BREVO_API_KEY    - Brevo transactional API key (account 1)
   BREVO_API_KEY_2  - Brevo transactional API key (account 2)
@@ -37,21 +42,11 @@ API_KEYS = [
 SHEET_WEBHOOK_URL = os.environ.get("SHEET_WEBHOOK_URL")
 SHEET_AUTH_TOKEN = os.environ.get("SHEET_AUTH_TOKEN", "cmp-lead-stats-2026")
 
-# Template ID to category mapping (reverse lookup)
-# Account 1: 7=Construction, 6=Banking, 8=Accounting, 9=Automotive
-# Account 2: 20=Construction, 23=Banking, 21=Accounting, 22=Automotive
-# Account 3: 8=Construction, 5=Banking, 6=Accounting, 7=Automotive
-# Account 4: 2=Construction, 1=Banking, 3=Accounting, 4=Automotive
-# Account 5: 2=Construction, 1=Banking, 3=Accounting, 4=Automotive
-TEMPLATE_TO_CATEGORY = {
-    # Account 1
-    7: "Construction", 6: "Banking", 8: "Accounting", 9: "Automotive",
-    # Account 2
-    20: "Construction", 23: "Banking", 21: "Accounting", 22: "Automotive",
-    # Account 3
-    8: "Construction", 5: "Banking", 6: "Accounting", 7: "Automotive",
-    # Account 4 & 5 (same template IDs)
-    1: "Banking", 2: "Construction", 3: "Accounting", 4: "Automotive",
+# Tag to category display name mapping
+TAG_TO_CATEGORY = {
+    "healthcare": "Healthcare & Wellness",
+    "building_materials": "Building Materials",
+    "fashion": "Apparel & Fashion",
 }
 
 
@@ -90,19 +85,14 @@ def get_events(api_key, days=1, limit=1000):
         return []
 
 
-def get_sent_emails(api_key, template_ids, limit=1000):
-    """Get list of sent transactional emails per template."""
-    emails = []
-    for tid in template_ids:
-        url = f"{BASE_URL}/smtp/emails?templateId={tid}&limit={limit}&offset=0&sort=desc"
-        try:
-            data = api_get(url, api_key)
-            for e in data.get("transactionalEmails", []):
-                e["account"] = api_key  # tag with which account
-                emails.append(e)
-        except Exception as e:
-            print(f"  Warning: Could not fetch emails for template {tid}: {e}")
-    return emails
+def get_category_from_tags(tags):
+    """Determine category from email tags."""
+    if not tags:
+        return "Unknown"
+    for tag in tags:
+        if tag in TAG_TO_CATEGORY:
+            return TAG_TO_CATEGORY[tag]
+    return "Unknown"
 
 
 def collect_summary():
@@ -151,7 +141,8 @@ def collect_detail_events():
         print(f"Fetching email events for {acct['label']}...")
         events = get_events(acct["key"], days=3, limit=1000)
         for ev in events:
-            category = TEMPLATE_TO_CATEGORY.get(ev.get("templateId"), "Unknown")
+            tags = ev.get("tags", [])
+            category = get_category_from_tags(tags)
             all_events.append({
                 "email": ev.get("email", ""),
                 "event": ev.get("event", ""),
@@ -159,7 +150,7 @@ def collect_detail_events():
                 "subject": ev.get("subject", ""),
                 "category": category,
                 "templateId": ev.get("templateId", ""),
-                "tag": ev.get("tag", ""),
+                "tag": ", ".join(tags) if tags else "",
                 "link": ev.get("link", ""),
                 "from": ev.get("from", ""),
                 "messageId": ev.get("messageId", ""),
@@ -170,39 +161,30 @@ def collect_detail_events():
 
 def collect_sent_emails():
     """Collect all sent transactional emails from all 5 accounts."""
-    # Template IDs per account
-    ACCOUNT_TEMPLATES = {
-        "Account 1": [7, 6, 8, 9],
-        "Account 2": [20, 23, 21, 22],
-        "Account 3": [8, 5, 6, 7],
-        "Account 4": [2, 1, 3, 4],
-        "Account 5": [2, 1, 3, 4],
-    }
     all_sent = []
     for acct in API_KEYS:
         if not acct["key"]:
             continue
         print(f"Fetching sent emails for {acct['label']}...")
-        tids = ACCOUNT_TEMPLATES.get(acct["label"], [])
-        for tid in tids:
-            url = f"{BASE_URL}/smtp/emails?templateId={tid}&limit=500&offset=0&sort=desc"
-            try:
-                data = api_get(url, acct["key"])
-                for e in data.get("transactionalEmails", []):
-                    category = TEMPLATE_TO_CATEGORY.get(e.get("templateId"), "Unknown")
-                    all_sent.append({
-                        "email": e.get("email", ""),
-                        "date": e.get("date", ""),
-                        "subject": e.get("subject", ""),
-                        "category": category,
-                        "templateId": e.get("templateId", ""),
-                        "tag": ", ".join(e.get("tags", [])) if e.get("tags") else "",
-                        "from": e.get("from", ""),
-                        "messageId": e.get("messageId", ""),
-                        "account": acct["label"],
-                    })
-            except Exception as e:
-                print(f"  Warning: Could not fetch sent emails for template {tid}: {e}")
+        url = f"{BASE_URL}/smtp/emails?limit=1000&offset=0&sort=desc"
+        try:
+            data = api_get(url, acct["key"])
+            for e in data.get("transactionalEmails", []):
+                tags = e.get("tags", [])
+                category = get_category_from_tags(tags)
+                all_sent.append({
+                    "email": e.get("email", ""),
+                    "date": e.get("date", ""),
+                    "subject": e.get("subject", ""),
+                    "category": category,
+                    "templateId": e.get("templateId", ""),
+                    "tag": ", ".join(tags) if tags else "",
+                    "from": e.get("from", ""),
+                    "messageId": e.get("messageId", ""),
+                    "account": acct["label"],
+                })
+        except Exception as e:
+            print(f"  Warning: Could not fetch sent emails: {e}")
     return all_sent
 
 
