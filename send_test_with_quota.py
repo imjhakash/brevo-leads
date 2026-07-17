@@ -1,6 +1,6 @@
 """
 Send a test email using whichever Brevo account has daily quota available.
-Checks all 5 accounts and uses the first one with remaining quota.
+Uses inline HTML (no Brevo template) with variables replaced directly in Python.
 
 Environment variables required:
   BREVO_API_KEY through BREVO_API_KEY_5
@@ -13,43 +13,28 @@ import urllib.request
 import urllib.error
 from datetime import date
 
+# Import the email builder from send_daily_batch
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from send_daily_batch import build_html_email, SUBJECTS, PDF_FILENAMES, PDF_PATHS, make_headers, get_brevo_sent_today, CATEGORIES
+
 BASE_URL = "https://api.brevo.com/v3"
 TEST_EMAIL = "helloatjh@gmail.com"
 TEST_FIRSTNAME = "Sarah"
 TEST_COMPANY = "Memorial Sloan Kettering"
 BREVO_DAILY_LIMIT = 300
 
-# Load template IDs
-ids_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "template_ids.json")
-with open(ids_path) as f:
-    template_ids = json.load(f)
-
-# Account configs
+# Account configs (same as send_daily_batch)
 ACCOUNTS = [
-    {"label": "1", "env": "BREVO_API_KEY", "template_id": template_ids.get("account_1", {}).get("template_id"), "category": "healthcare"},
-    {"label": "2", "env": "BREVO_API_KEY_2", "template_id": template_ids.get("account_2", {}).get("template_id"), "category": "building_materials"},
-    {"label": "3", "env": "BREVO_API_KEY_3", "template_id": template_ids.get("account_3", {}).get("template_id"), "category": "building_materials"},
-    {"label": "4", "env": "BREVO_API_KEY_4", "template_id": template_ids.get("account_4", {}).get("template_id"), "category": "fashion"},
-    {"label": "5", "env": "BREVO_API_KEY_5", "template_id": template_ids.get("account_5", {}).get("template_id"), "category": "healthcare"},
+    {"label": "1", "env": "BREVO_API_KEY", "category": "healthcare", "sender": "admin@codemypixel.com"},
+    {"label": "2", "env": "BREVO_API_KEY_2", "category": "building_materials", "sender": "sabbir@team.codemypixel.com"},
+    {"label": "3", "env": "BREVO_API_KEY_3", "category": "building_materials", "sender": "akash@codemypixel.com"},
+    {"label": "4", "env": "BREVO_API_KEY_4", "category": "fashion", "sender": "neel@connect.codemypixel.com"},
+    {"label": "5", "env": "BREVO_API_KEY_5", "category": "healthcare", "sender": "pravas@app.codemypixel.com"},
 ]
 
-def get_brevo_sent_today(api_key):
-    """Query Brevo API for how many emails were sent today."""
-    today_str = date.today().strftime("%Y-%m-%d")
-    headers = {"accept": "application/json", "api-key": api_key}
-    url = f"{BASE_URL}/smtp/statistics/aggregatedReport?startDate={today_str}&endDate={today_str}"
-    req = urllib.request.Request(url, headers=headers, method="GET")
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read())
-            return data.get("requests", 0)
-    except Exception:
-        return 0
-
-print(f"=== Checking all Brevo accounts for available quota ===")
+print("=== Checking all Brevo accounts for available quota ===")
 print(f"  Daily limit: {BREVO_DAILY_LIMIT} per account\n")
 
-# Check all accounts and find one with quota
 available_account = None
 for acct in ACCOUNTS:
     api_key = os.environ.get(acct["env"])
@@ -59,28 +44,44 @@ for acct in ACCOUNTS:
     
     sent_today = get_brevo_sent_today(api_key)
     remaining = BREVO_DAILY_LIMIT - sent_today
-    status = "✓ AVAILABLE" if remaining > 0 else "✗ EXHAUSTED"
+    status = "AVAILABLE" if remaining > 0 else "EXHAUSTED"
     print(f"  Account {acct['label']}: {sent_today}/{BREVO_DAILY_LIMIT} sent, {remaining} remaining - {status}")
     
     if remaining > 0 and available_account is None:
         available_account = acct
 
 if not available_account:
-    print(f"\n  ✗ All accounts exhausted. No quota available today.")
-    print(f"  Try again tomorrow when quotas reset.")
+    print("\n  All accounts exhausted. No quota available today.")
+    print("  Try again tomorrow when quotas reset.")
     sys.exit(1)
 
-print(f"\n  ✓ Using Account {available_account['label']} ({available_account['category']}) - {BREVO_DAILY_LIMIT - get_brevo_sent_today(os.environ.get(available_account['env']))} remaining")
+remaining = BREVO_DAILY_LIMIT - get_brevo_sent_today(os.environ.get(available_account["env"]))
+print(f"\n  Using Account {available_account['label']} ({available_account['category']}) - {remaining} remaining")
+
+# Build the test email with mock variables
+recipient = {"email": TEST_EMAIL, "firstname": TEST_FIRSTNAME, "company": TEST_COMPANY}
+category = available_account["category"]
+html_content = build_html_email(recipient, category)
+
+# Verify name and company are in the HTML
+if TEST_FIRSTNAME in html_content:
+    print(f"  ✓ Name '{TEST_FIRSTNAME}' found in HTML body")
+else:
+    print(f"  ✗ WARNING: Name '{TEST_FIRSTNAME}' NOT in HTML!")
+
+if TEST_COMPANY in html_content:
+    print(f"  ✓ Company '{TEST_COMPANY}' found in HTML body")
+else:
+    print(f"  ✗ WARNING: Company '{TEST_COMPANY}' NOT in HTML!")
+
+if "codemypixel.com" in html_content:
+    print(f"  ✓ CodeMyPixel link found in HTML body")
+else:
+    print(f"  ✗ WARNING: CodeMyPixel link NOT in HTML!")
 
 # Load PDF attachment
-PDF_MAP = {
-    "healthcare": ("assets/healthcare-report.pdf", "AI-Automation-Report-Healthcare-Wellness.pdf"),
-    "building_materials": ("assets/building-materials-report.pdf", "AI-Automation-Report-Building-Materials.pdf"),
-    "fashion": ("assets/fashion-report.pdf", "AI-Automation-Report-Apparel-Fashion.pdf"),
-}
-
-category = available_account["category"]
-pdf_path, pdf_name = PDF_MAP[category]
+pdf_path = PDF_PATHS[category]
+pdf_name = PDF_FILENAMES[category]
 pdf_b64 = None
 if os.path.exists(pdf_path):
     with open(pdf_path, "rb") as f:
@@ -89,39 +90,34 @@ if os.path.exists(pdf_path):
 else:
     print(f"  WARNING: PDF not found at {pdf_path}")
 
-# Build email body
+# Build email body (inline HTML, no templateId)
 body = {
-    "templateId": available_account["template_id"],
+    "sender": {"name": "Johirul Hoq Akash", "email": available_account["sender"]},
+    "subject": SUBJECTS[category],
+    "htmlContent": html_content,
     "to": [{"email": TEST_EMAIL, "name": TEST_FIRSTNAME}],
-    "params": {"FIRSTNAME": TEST_FIRSTNAME, "COMPANY": TEST_COMPANY},
     "tags": ["test", category],
 }
 
 if pdf_b64:
     body["attachment"] = [{"content": pdf_b64, "name": pdf_name}]
 
-headers = {
-    "accept": "application/json",
-    "content-type": "application/json",
-    "api-key": os.environ.get(available_account["env"]),
-}
-
+headers = make_headers(os.environ.get(available_account["env"]))
 data = json.dumps(body).encode("utf-8")
 req = urllib.request.Request(f"{BASE_URL}/smtp/email", data=data, headers=headers, method="POST")
 
 try:
     with urllib.request.urlopen(req, timeout=30) as resp:
         result = json.loads(resp.read())
-        print(f"\n  ✓ SUCCESS! Email sent via Account {available_account['label']}.")
+        print(f"\n  SUCCESS! Email sent via Account {available_account['label']}.")
         print(f"  Full Brevo API response:")
         print(f"  {json.dumps(result, indent=2)}")
         print(f"  Message ID: {result.get('messageId', 'N/A')}")
         print(f"  Check helloatjh@gmail.com inbox (and spam folder).")
 except urllib.error.HTTPError as e:
     err = e.read().decode("utf-8", errors="ignore")
-    print(f"\n  ✗ FAILED: {e.code} {err}", file=sys.stderr)
-    print(f"  Full error response: {err}", file=sys.stderr)
+    print(f"\n  FAILED: {e.code} {err}", file=sys.stderr)
     sys.exit(1)
 except Exception as e:
-    print(f"\n  ✗ FAILED: {e}", file=sys.stderr)
+    print(f"\n  FAILED: {e}", file=sys.stderr)
     sys.exit(1)
