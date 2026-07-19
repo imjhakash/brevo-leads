@@ -386,8 +386,8 @@ def build_html_email(recipient, category):
     return html
 
 
-def send_one(recipient, category, api_key, sender_email, pdf_b64):
-    """Send a single personalized email with inline HTML + PDF attachment."""
+def send_one(recipient, category, api_key, sender_email):
+    """Send a single personalized email with inline HTML (no PDF attachment)."""
     headers = make_headers(api_key)
     subject = SUBJECTS.get(category, "We researched your market and found something interesting")
     html_content = build_html_email(recipient, category)
@@ -399,10 +399,6 @@ def send_one(recipient, category, api_key, sender_email, pdf_b64):
         "to": [{"email": recipient["email"], "name": recipient["firstname"]}],
         "tags": [category],
     }
-
-    if pdf_b64:
-        filename = PDF_FILENAMES.get(category, "report.pdf")
-        body["attachment"] = [{"content": pdf_b64, "name": filename}]
 
     data = json.dumps(body).encode("utf-8")
     req = urllib.request.Request(f"{BASE_URL}/smtp/email", data=data, headers=headers, method="POST")
@@ -421,11 +417,11 @@ def send_one(recipient, category, api_key, sender_email, pdf_b64):
     return False, "failed after retries"
 
 
-def send_batch(leads, category, api_key, sender_email, account_label, max_sends, pdf_b64):
+def send_batch(leads, category, api_key, sender_email, account_label, max_sends):
     sent, failed = 0, 0
     fail_log = []
     for lead in leads[:max_sends]:
-        ok, result = send_one(lead, category, api_key, sender_email, pdf_b64)
+        ok, result = send_one(lead, category, api_key, sender_email)
         if ok:
             sent += 1
         else:
@@ -458,10 +454,6 @@ def main():
 
         print(f"--- Category: {cat_key} ({len(accounts)} account(s), pointer at {pointer}/{len(leads)}) ---")
 
-        pdf_b64 = load_pdf_attachment(cat_key)
-        if pdf_b64:
-            print(f"  PDF attachment loaded ({PDF_FILENAMES[cat_key]})")
-
         current_offset = pointer
         category_sent = 0
         category_failed = 0
@@ -484,7 +476,7 @@ def main():
 
             print(f"  [Account {acct['label']}] Sending {len(batch)} leads (sender: {acct['sender']}, Brevo used: {sent_today}/{BREVO_DAILY_LIMIT})")
 
-            sent, failed, fail_log = send_batch(batch, cat_key, acct["api_key"], acct["sender"], acct["label"], acct["remaining"], pdf_b64)
+            sent, failed, fail_log = send_batch(batch, cat_key, acct["api_key"], acct["sender"], acct["label"], acct["remaining"])
 
             current_offset += sent
             category_sent += sent
