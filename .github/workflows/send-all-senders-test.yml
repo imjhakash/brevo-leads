@@ -1,0 +1,25 @@
+name: Spam Deliverability Test - All 5 Senders
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Send test from all 5 sender accounts
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_API_KEY_2: ${{ secrets.BREVO_API_KEY_2 }}
+          BREVO_API_KEY_3: ${{ secrets.BREVO_API_KEY_3 }}
+          BREVO_API_KEY_4: ${{ secrets.BREVO_API_KEY_4 }}
+          BREVO_API_KEY_5: ${{ secrets.BREVO_API_KEY_5 }}
+        run: python3 send_all_senders_test.py
