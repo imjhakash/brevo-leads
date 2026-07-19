@@ -5,7 +5,6 @@ Uses inline HTML (no Brevo template) with variables replaced directly in Python.
 Environment variables required:
   BREVO_API_KEY through BREVO_API_KEY_5
 """
-import base64
 import json
 import os
 import sys
@@ -15,7 +14,7 @@ from datetime import date
 
 # Import the email builder from send_daily_batch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from send_daily_batch import build_html_email, SUBJECTS, PDF_FILENAMES, PDF_PATHS, make_headers, get_brevo_sent_today, CATEGORIES
+from send_daily_batch import build_html_email, SUBJECTS, make_headers, get_brevo_sent_today, CATEGORIES
 
 BASE_URL = "https://api.brevo.com/v3"
 TEST_EMAIL = "helloatjh@gmail.com"
@@ -79,18 +78,7 @@ if "codemypixel.com" in html_content:
 else:
     print(f"  ✗ WARNING: CodeMyPixel link NOT in HTML!")
 
-# Load PDF attachment
-pdf_path = PDF_PATHS[category]
-pdf_name = PDF_FILENAMES[category]
-pdf_b64 = None
-if os.path.exists(pdf_path):
-    with open(pdf_path, "rb") as f:
-        pdf_b64 = base64.b64encode(f.read()).decode("utf-8")
-    print(f"  PDF attachment: {pdf_name} ({os.path.getsize(pdf_path)//1024}KB)")
-else:
-    print(f"  WARNING: PDF not found at {pdf_path}")
-
-# Build email body (inline HTML, no templateId)
+# Build email body (inline HTML, no templateId, no PDF attachment)
 body = {
     "sender": {"name": "Johirul Hoq Akash", "email": available_account["sender"]},
     "subject": SUBJECTS[category],
@@ -98,9 +86,6 @@ body = {
     "to": [{"email": TEST_EMAIL, "name": TEST_FIRSTNAME}],
     "tags": ["test", category],
 }
-
-if pdf_b64:
-    body["attachment"] = [{"content": pdf_b64, "name": pdf_name}]
 
 headers = make_headers(os.environ.get(available_account["env"]))
 data = json.dumps(body).encode("utf-8")

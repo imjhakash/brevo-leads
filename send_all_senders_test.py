@@ -5,7 +5,6 @@ Each email is labeled by account number so you can see which sender lands in inb
 Environment variables required:
   BREVO_API_KEY through BREVO_API_KEY_5
 """
-import base64
 import json
 import os
 import sys
@@ -15,7 +14,7 @@ from datetime import date
 
 # Import email builder from send_daily_batch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from send_daily_batch import build_html_email, SUBJECTS, PDF_FILENAMES, PDF_PATHS, make_headers, get_brevo_sent_today
+from send_daily_batch import build_html_email, SUBJECTS, make_headers, get_brevo_sent_today
 
 BASE_URL = "https://api.brevo.com/v3"
 TEST_EMAIL = "akash@codemypixel.com"
@@ -68,14 +67,6 @@ for acct in ACCOUNTS:
     # Change subject to include account label
     subject = f"[TEST Account {acct['label']}] {SUBJECTS[category]}"
 
-    # Load PDF for this account's category
-    pdf_path = PDF_PATHS[category]
-    pdf_name = PDF_FILENAMES[category]
-    pdf_b64 = None
-    if os.path.exists(pdf_path):
-        with open(pdf_path, "rb") as f:
-            pdf_b64 = base64.b64encode(f.read()).decode("utf-8")
-
     body = {
         "sender": {"name": "Johirul Hoq Akash", "email": acct["sender"]},
         "subject": subject,
@@ -83,9 +74,6 @@ for acct in ACCOUNTS:
         "to": [{"email": TEST_EMAIL, "name": TEST_FIRSTNAME}],
         "tags": ["spam-test", category, f"account-{acct['label']}"],
     }
-
-    if pdf_b64:
-        body["attachment"] = [{"content": pdf_b64, "name": pdf_name}]
 
     data = json.dumps(body).encode("utf-8")
     req = urllib.request.Request(f"{BASE_URL}/smtp/email", data=data, headers=make_headers(api_key), method="POST")
