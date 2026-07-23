@@ -1,10 +1,10 @@
 {
   "pointers": {
-    "healthcare": 3585,
-    "building_materials": 3577,
-    "fashion": 1797
+    "healthcare": 4185,
+    "building_materials": 4177,
+    "fashion": 2097
   },
-  "last_run_date": "2026-07-22",
+  "last_run_date": "2026-07-23",
   "history": [
     {
       "date": "2026-07-17",
@@ -343,6 +343,63 @@
           "failures": [],
           "pointer_before": 1497,
           "pointer_after": 1797
+        }
+      ],
+      "total_sent": 1500,
+      "total_failed": 0
+    },
+    {
+      "date": "2026-07-23",
+      "results": [
+        {
+          "category": "healthcare",
+          "account": "1",
+          "attempted": 300,
+          "sent": 300,
+          "failed": 0,
+          "failures": [],
+          "pointer_before": 3585,
+          "pointer_after": 3885
+        },
+        {
+          "category": "healthcare",
+          "account": "5",
+          "attempted": 300,
+          "sent": 300,
+          "failed": 0,
+          "failures": [],
+          "pointer_before": 3885,
+          "pointer_after": 4185
+        },
+        {
+          "category": "building_materials",
+          "account": "2",
+          "attempted": 300,
+          "sent": 300,
+          "failed": 0,
+          "failures": [],
+          "pointer_before": 3577,
+          "pointer_after": 3877
+        },
+        {
+          "category": "building_materials",
+          "account": "3",
+          "attempted": 300,
+          "sent": 300,
+          "failed": 0,
+          "failures": [],
+          "pointer_before": 3877,
+          "pointer_after": 4177
+        },
+        {
+          "category": "fashion",
+          "account": "4",
+          "attempted": 300,
+          "sent": 300,
+          "failed": 0,
+          "failures": [],
+          "pointer_before": 1797,
+          "pointer_after": 2097
         }
       ],
       "total_sent": 1500,
