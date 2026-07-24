@@ -14,7 +14,7 @@ from datetime import date
 
 # Import email builder from send_daily_batch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from send_daily_batch import build_html_email, SUBJECTS, make_headers, get_brevo_sent_today
+from send_daily_batch import build_html_email, make_headers, get_brevo_sent_today
 
 BASE_URL = "https://api.brevo.com/v3"
 TEST_EMAIL = "akash@codemypixel.com"
@@ -34,7 +34,6 @@ print("=== Spam/Deliverability Test: Send from all 5 accounts ===")
 print(f"  Recipient: {TEST_EMAIL}")
 print(f"  Each email is labeled with its account number in the subject\n")
 
-# Test recipient (one row)
 recipient = {"email": TEST_EMAIL, "firstname": TEST_FIRSTNAME, "company": TEST_COMPANY}
 
 results = []
@@ -57,15 +56,7 @@ for acct in ACCOUNTS:
     category = acct["category"]
     html_content = build_html_email(recipient, category)
 
-    # Add a visible label in the email body and subject
-    html_label = f'<div style="background:#ffeb3b;color:#000;padding:10px 14px;font-size:13px;font-weight:700;text-align:center;border-radius:8px;margin:14px 0;">THIS IS A DELIVERABILITY TEST - Account {acct["label"]} - Sender: {acct["sender"]}</div>'
-    html_content = html_content.replace(
-        '<h1 style="margin:0 0 14px 0;color:#0f172a;font-size:24px;font-weight:800;letter-spacing:-0.5px;line-height:1.3;">',
-        html_label + '<h1 style="margin:0 0 14px 0;color:#0f172a;font-size:24px;font-weight:800;letter-spacing:-0.5px;line-height:1.3;">'
-    )
-
-    # Change subject to include account label
-    subject = f"[TEST Account {acct['label']}] {SUBJECTS[category]}"
+    subject = f"[TEST Account {acct['label']}] An idea for {TEST_COMPANY}"
 
     body = {
         "sender": {"name": "Johirul Hoq Akash", "email": acct["sender"]},

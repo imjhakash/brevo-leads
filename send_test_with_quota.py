@@ -14,7 +14,7 @@ from datetime import date
 
 # Import the email builder from send_daily_batch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from send_daily_batch import build_html_email, SUBJECTS, make_headers, get_brevo_sent_today, CATEGORIES
+from send_daily_batch import build_html_email, make_headers, get_brevo_sent_today, CATEGORIES
 
 BASE_URL = "https://api.brevo.com/v3"
 TEST_EMAIL = "helloatjh@gmail.com"
@@ -22,7 +22,6 @@ TEST_FIRSTNAME = "Sarah"
 TEST_COMPANY = "Memorial Sloan Kettering"
 BREVO_DAILY_LIMIT = 300
 
-# Account configs (same as send_daily_batch)
 ACCOUNTS = [
     {"label": "1", "env": "BREVO_API_KEY", "category": "healthcare", "sender": "admin@codemypixel.com"},
     {"label": "2", "env": "BREVO_API_KEY_2", "category": "building_materials", "sender": "sabbir@team.codemypixel.com"},
@@ -40,12 +39,12 @@ for acct in ACCOUNTS:
     if not api_key:
         print(f"  Account {acct['label']}: SKIP - {acct['env']} not set")
         continue
-    
+
     sent_today = get_brevo_sent_today(api_key)
     remaining = BREVO_DAILY_LIMIT - sent_today
     status = "AVAILABLE" if remaining > 0 else "EXHAUSTED"
     print(f"  Account {acct['label']}: {sent_today}/{BREVO_DAILY_LIMIT} sent, {remaining} remaining - {status}")
-    
+
     if remaining > 0 and available_account is None:
         available_account = acct
 
@@ -57,12 +56,10 @@ if not available_account:
 remaining = BREVO_DAILY_LIMIT - get_brevo_sent_today(os.environ.get(available_account["env"]))
 print(f"\n  Using Account {available_account['label']} ({available_account['category']}) - {remaining} remaining")
 
-# Build the test email with mock variables
 recipient = {"email": TEST_EMAIL, "firstname": TEST_FIRSTNAME, "company": TEST_COMPANY}
 category = available_account["category"]
 html_content = build_html_email(recipient, category)
 
-# Verify name and company are in the HTML
 if TEST_FIRSTNAME in html_content:
     print(f"  ✓ Name '{TEST_FIRSTNAME}' found in HTML body")
 else:
@@ -73,15 +70,11 @@ if TEST_COMPANY in html_content:
 else:
     print(f"  ✗ WARNING: Company '{TEST_COMPANY}' NOT in HTML!")
 
-if "codemypixel.com" in html_content:
-    print(f"  ✓ CodeMyPixel link found in HTML body")
-else:
-    print(f"  ✗ WARNING: CodeMyPixel link NOT in HTML!")
+subject = f"An idea for {TEST_COMPANY}"
 
-# Build email body (inline HTML, no templateId, no PDF attachment)
 body = {
     "sender": {"name": "Johirul Hoq Akash", "email": available_account["sender"]},
-    "subject": SUBJECTS[category],
+    "subject": subject,
     "htmlContent": html_content,
     "to": [{"email": TEST_EMAIL, "name": TEST_FIRSTNAME}],
     "tags": ["test", category],
